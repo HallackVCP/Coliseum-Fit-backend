@@ -21,7 +21,6 @@ public class Aluno extends Pessoa implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "instrutor_id")
-
     private Instrutor instrutor;
 
     @OneToOne
