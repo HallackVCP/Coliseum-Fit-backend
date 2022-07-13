@@ -17,8 +17,6 @@ public class Ficha implements Serializable {
     private Integer Id;
 
 
-    @OneToOne
-    private Aluno aluno;
 
 
     @OneToMany
@@ -28,9 +26,8 @@ public class Ficha implements Serializable {
     public Ficha() {
     }
 
-    public Ficha(Integer Id, Aluno aluno, List<Treino> treinos) {
+    public Ficha(Integer Id, List<Treino> treinos) {
         Id = Id;
-        this.aluno = aluno;
         this.treinos = treinos;
     }
 
@@ -42,13 +39,6 @@ public class Ficha implements Serializable {
         Id = Id;
     }
 
-    public Aluno getAluno() {
-        return aluno;
-    }
-
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
-    }
 
     public List<Treino> getTreinos() {
         return treinos;

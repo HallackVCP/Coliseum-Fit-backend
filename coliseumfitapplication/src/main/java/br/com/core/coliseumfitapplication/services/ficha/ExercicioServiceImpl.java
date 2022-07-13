@@ -2,20 +2,25 @@ package br.com.core.coliseumfitapplication.services.ficha;
 
 import br.com.core.coliseumfitapplication.dtos.ficha.ExercicioDto;
 import br.com.core.coliseumfitapplication.model.ficha.Exercicio;
+import br.com.core.coliseumfitapplication.model.ficha.Ficha;
 import br.com.core.coliseumfitapplication.repository.ficha.ExercicioRepository;
 import br.com.core.coliseumfitapplication.services.exceptions.ObjectNotFoundException;
 import br.com.core.coliseumfitapplication.services.ficha.interfaces.ExercicioService;
 
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ExercicioServiceImpl implements ExercicioService {
 
     private final ExercicioRepository exercicioRepository;
 
     private final ModelMapper modelMapper;
+
 
     public ExercicioServiceImpl(ExercicioRepository exercicioRepository, ModelMapper modelMapper) {
         this.exercicioRepository = exercicioRepository;
@@ -28,13 +33,19 @@ public class ExercicioServiceImpl implements ExercicioService {
     }
 
     @Override
-    public Optional<Exercicio> findById(Integer Id) {
-        return exercicioRepository.findById(Id);
+    public Exercicio findById(Integer Id) {
+        Optional<Exercicio> exercicioOptional = exercicioRepository.findById(Id);
+        if(exercicioOptional.isPresent()){
+            return exercicioOptional.get();
+        }
+        else{
+            throw new ObjectNotFoundException("Objeto não encontrado! Id: " + Id + ", Tipo: " + Exercicio.class);
+        }
     }
 
     @Override
-    public List<Exercicio> findAll() {
-        return exercicioRepository.findAll();
+    public List<Exercicio> findAll(Integer treinoId) {
+        return exercicioRepository.findAllByTreinoId(treinoId);
     }
 
     @Override
@@ -43,14 +54,12 @@ public class ExercicioServiceImpl implements ExercicioService {
     }
 
     @Override
-    public void deleteAll() {
-        exercicioRepository.deleteAll();
+    public void deleteAll(List<ExercicioDto> exerciciosDto) {
+        List<Exercicio> exercicios = modelMapper.map(exerciciosDto, new TypeToken<List<Exercicio>>(){}.getType());
+        exercicioRepository.deleteAll(exercicios);
     }
 
-    @Override
-    public List<Exercicio> findAllByNome(String nome) {
-        return exercicioRepository.findAllByNome(nome);
-    }
+
 
     @Override
     public Exercicio updateById(Integer Id, ExercicioDto exercicioDto) {

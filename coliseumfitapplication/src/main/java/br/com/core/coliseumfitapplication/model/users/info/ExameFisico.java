@@ -15,18 +15,12 @@ public class ExameFisico {
     private double peso;
     private double altura;
 
-    @OneToOne
-    private Aluno aluno;
+
 
     public ExameFisico() {
     }
 
-    public ExameFisico(Integer Id, double peso, double altura, Aluno aluno) {
-        Id = Id;
-        this.peso = peso;
-        this.altura = altura;
-        this.aluno = aluno;
-    }
+
 
     public ExameFisico(Integer Id, double peso, double altura) {
         Id = Id;
@@ -58,13 +52,6 @@ public class ExameFisico {
         Id = Id;
     }
 
-    public Aluno getAluno() {
-        return aluno;
-    }
-
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
-    }
 
     @Override
     public boolean equals(Object o) {

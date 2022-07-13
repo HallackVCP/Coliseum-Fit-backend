@@ -10,16 +10,15 @@ public class MatriculaDto {
 
     private StatusMatricula status;
     private Plano plano;
-    private AlunoDto alunoDto;
+
 
     public MatriculaDto() {
     }
 
-    public MatriculaDto(Integer id, StatusMatricula status, Plano plano, AlunoDto alunoDto) {
+    public MatriculaDto(Integer id, StatusMatricula status, Plano plano) {
         Id = id;
         this.status = status;
         this.plano = plano;
-        this.alunoDto = alunoDto;
     }
 
     public Integer getId() {
@@ -46,11 +45,4 @@ public class MatriculaDto {
         this.plano = plano;
     }
 
-    public AlunoDto getAlunoDto() {
-        return alunoDto;
-    }
-
-    public void setAlunoDto(AlunoDto alunoDto) {
-        this.alunoDto = alunoDto;
-    }
 }

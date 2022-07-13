@@ -16,19 +16,16 @@ public class Exercicio implements Serializable {
 
     private double carga;
 
-    @ManyToOne
-    @JoinColumn(name = "treino_id")
-    private Treino treino;
+
 
     public Exercicio() {
     }
 
-    public Exercicio(Integer Id, String nome, int repeticoes, double carga, Treino treino) {
+    public Exercicio(Integer Id, String nome, int repeticoes, double carga) {
         Id = Id;
         this.nome = nome;
         this.repeticoes = repeticoes;
         this.carga = carga;
-        this.treino = treino;
     }
 
     public int getId() {
@@ -63,13 +60,6 @@ public class Exercicio implements Serializable {
         this.carga = carga;
     }
 
-    public Treino getTreino() {
-        return treino;
-    }
-
-    public void setTreino(Treino treino) {
-        this.treino = treino;
-    }
 
     @Override
     public boolean equals(Object o) {

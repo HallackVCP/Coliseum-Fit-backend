@@ -17,17 +17,16 @@ public class Matricula implements Serializable {
     private Plano plano;
 
 
-    @OneToOne
-    private Aluno aluno;
+
 
     public Matricula() {
     }
 
-    public Matricula(Integer Id, StatusMatricula status, Plano plano, Aluno aluno) {
+    public Matricula(Integer Id, StatusMatricula status, Plano plano) {
         Id = Id;
         this.status = status;
         this.plano = plano;
-        this.aluno = aluno;
+
     }
 
     public StatusMatricula getStatus() {
@@ -54,13 +53,7 @@ public class Matricula implements Serializable {
         Id = Id;
     }
 
-    public Aluno getAluno() {
-        return aluno;
-    }
 
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
-    }
 
     @Override
     public boolean equals(Object o) {

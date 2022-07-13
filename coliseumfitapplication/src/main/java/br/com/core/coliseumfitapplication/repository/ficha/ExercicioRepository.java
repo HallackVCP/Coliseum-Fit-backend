@@ -9,5 +9,7 @@ import java.util.List;
 @Repository
 public interface ExercicioRepository extends JpaRepository<Exercicio, Integer> {
 
-    List<Exercicio> findAllByNome(String nome);
+    List<Exercicio> findAllByTreinoId(Integer Id);
+
+
 }

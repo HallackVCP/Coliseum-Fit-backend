@@ -18,10 +18,6 @@ public class Instrutor extends Pessoa implements Serializable {
     @JsonIgnore
     private List<Aluno> alunos;
 
-    @ManyToOne
-    @JoinColumn(name = "admnistrador_id")
-    private Administrador administrador;
-
     public Instrutor(Integer Id, List<Aluno> alunos) {
         Id = Id;
         this.alunos = alunos;

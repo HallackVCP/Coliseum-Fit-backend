@@ -24,19 +24,16 @@ public class Treino implements Serializable {
     @JsonIgnore
     private List<Exercicio> exercicios;
 
-    @ManyToOne
-    @JoinColumn(name = "ficha_id")
-    private Ficha ficha;
+
 
     public Treino() {
     }
 
-    public Treino(Integer id, String nome, String descricao, List<Exercicio> exercicios, Ficha ficha) {
+    public Treino(Integer id, String nome, String descricao, List<Exercicio> exercicios) {
         Id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.exercicios = exercicios;
-        this.ficha = ficha;
     }
 
     public int getId() {
@@ -71,13 +68,6 @@ public class Treino implements Serializable {
         this.exercicios = exercicios;
     }
 
-    public Ficha getFicha() {
-        return ficha;
-    }
-
-    public void setFicha(Ficha ficha) {
-        this.ficha = ficha;
-    }
 
     @Override
     public boolean equals(Object o) {

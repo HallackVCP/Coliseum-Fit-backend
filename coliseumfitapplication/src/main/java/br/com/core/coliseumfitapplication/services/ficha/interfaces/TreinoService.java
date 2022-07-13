@@ -10,7 +10,7 @@ public interface TreinoService {
 
     public Treino salvarTreino(TreinoDto treinoDto);
 
-    public Optional<Treino> findById(Integer Id);
+    public Treino findById(Integer Id);
 
     public List<Treino> findAll();
 
@@ -19,4 +19,6 @@ public interface TreinoService {
     public void deleteAll();
 
     public List<Treino> findAllByNome(String nome);
+
+    public Treino updateById(Integer Id, TreinoDto treinoDto);
 }

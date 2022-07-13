@@ -4,30 +4,18 @@ import br.com.core.coliseumfitapplication.dtos.users.AlunoDto;
 
 public class ExameFisicoDto {
 
-    private Integer Id;
-
     private double peso;
     private double altura;
 
-    private AlunoDto alunoDto;
 
     public ExameFisicoDto() {
     }
 
-    public ExameFisicoDto(Integer id, double peso, double altura, AlunoDto alunoDto) {
-        Id = id;
+    public ExameFisicoDto(Integer id, double peso, double altura) {
         this.peso = peso;
         this.altura = altura;
-        this.alunoDto = alunoDto;
     }
 
-    public Integer getId() {
-        return Id;
-    }
-
-    public void setId(Integer id) {
-        Id = id;
-    }
 
     public double getPeso() {
         return peso;
@@ -45,11 +33,5 @@ public class ExameFisicoDto {
         this.altura = altura;
     }
 
-    public AlunoDto getAlunoDto() {
-        return alunoDto;
-    }
 
-    public void setAlunoDto(AlunoDto alunoDto) {
-        this.alunoDto = alunoDto;
-    }
 }

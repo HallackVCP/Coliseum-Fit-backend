@@ -9,9 +9,8 @@ public interface FichaService {
 
     public Ficha salvarFicha(FichaDto fichaDto);
 
-    public Optional<Ficha> buscarFicha(Integer Id);
+    public Ficha buscarFicha(Integer Id);
 
-    public void deleteById(Integer Id);
 
 
 }

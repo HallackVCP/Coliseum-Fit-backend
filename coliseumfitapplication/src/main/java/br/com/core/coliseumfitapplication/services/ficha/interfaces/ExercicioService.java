@@ -10,15 +10,14 @@ public interface ExercicioService {
 
     public Exercicio salvar(ExercicioDto exercicioDto);
 
-    public Optional<Exercicio> findById(Integer Id);
+    public Exercicio findById(Integer Id);
 
-    public List<Exercicio> findAll();
+    public List<Exercicio> findAll(Integer treinoId);
 
     public void deleteById(Integer Id);
 
-    public void deleteAll();
+    public void deleteAll(List<ExercicioDto> exerciciosDto);
 
-    public List<Exercicio> findAllByNome(String nome);
 
     public Exercicio updateById(Integer Id, ExercicioDto exercicioDto);
 

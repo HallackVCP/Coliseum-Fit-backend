@@ -19,9 +19,7 @@ public class Aluno extends Pessoa implements Serializable {
     @OneToOne
     private Matricula matricula;
 
-    @ManyToOne
-    @JoinColumn(name = "instrutor_id")
-    private Instrutor instrutor;
+
 
     @OneToOne
     private ExameFisico exameFisico;
@@ -32,19 +30,17 @@ public class Aluno extends Pessoa implements Serializable {
     public Aluno() {
     }
 
-    public Aluno(Integer id, Matricula matricula, Instrutor instrutor, ExameFisico exameFisico, Ficha ficha) {
+    public Aluno(Integer id, Matricula matricula, ExameFisico exameFisico, Ficha ficha) {
         Id = id;
         this.matricula = matricula;
-        this.instrutor = instrutor;
         this.exameFisico = exameFisico;
         this.ficha = ficha;
     }
 
-    public Aluno(String nome, String cpf, String email, String telefone, String senha, Integer id, Matricula matricula, Instrutor instrutor, ExameFisico exameFisico, Ficha ficha) {
+    public Aluno(String nome, String cpf, String email, String telefone, String senha, Integer id, Matricula matricula, ExameFisico exameFisico, Ficha ficha) {
         super(nome, cpf, email, telefone, senha);
         Id = id;
         this.matricula = matricula;
-        this.instrutor = instrutor;
         this.exameFisico = exameFisico;
         this.ficha = ficha;
     }
@@ -63,14 +59,6 @@ public class Aluno extends Pessoa implements Serializable {
 
     public void setMatricula(Matricula matricula) {
         this.matricula = matricula;
-    }
-
-    public Instrutor getInstrutor() {
-        return instrutor;
-    }
-
-    public void setInstrutor(Instrutor instrutor) {
-        this.instrutor = instrutor;
     }
 
     public ExameFisico getExameFisico() {

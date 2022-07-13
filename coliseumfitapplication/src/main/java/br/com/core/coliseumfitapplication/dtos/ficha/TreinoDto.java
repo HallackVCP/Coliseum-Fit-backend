@@ -7,16 +7,15 @@ public class TreinoDto {
     private String nome;
     private String descricao;
     private List<ExercicioDto> exercicioDtos;
-    private FichaDto fichaDto;
+
 
     public TreinoDto() {
     }
 
-    public TreinoDto(String nome, String descricao, List<ExercicioDto> exercicioDtos, FichaDto fichaDto) {
+    public TreinoDto(String nome, String descricao, List<ExercicioDto> exercicioDtos) {
         this.nome = nome;
         this.descricao = descricao;
         this.exercicioDtos = exercicioDtos;
-        this.fichaDto = fichaDto;
     }
 
     public String getNome() {
@@ -43,11 +42,4 @@ public class TreinoDto {
         this.exercicioDtos = exercicioDtos;
     }
 
-    public FichaDto getFichaDto() {
-        return fichaDto;
-    }
-
-    public void setFichaDto(FichaDto fichaDto) {
-        this.fichaDto = fichaDto;
-    }
 }

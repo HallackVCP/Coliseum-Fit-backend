@@ -6,17 +6,15 @@ import java.util.List;
 
 public class InstrutorDto extends Pessoa {
 
-    private InstrutorDto instrutorDto;
+
     private List<AlunoDto> alunoDtos;
 
-    public InstrutorDto(InstrutorDto instrutorDto, List<AlunoDto> alunoDtos) {
-        this.instrutorDto = instrutorDto;
+    public InstrutorDto(List<AlunoDto> alunoDtos) {
         this.alunoDtos = alunoDtos;
     }
 
-    public InstrutorDto(String nome, String cpf, String email, String telefone, String senha, InstrutorDto instrutorDto, List<AlunoDto> alunoDtos) {
+    public InstrutorDto(String nome, String cpf, String email, String telefone, String senha, List<AlunoDto> alunoDtos) {
         super(nome, cpf, email, telefone, senha);
-        this.instrutorDto = instrutorDto;
         this.alunoDtos = alunoDtos;
     }
 
@@ -27,13 +25,6 @@ public class InstrutorDto extends Pessoa {
         super(nome, cpf, email, telefone, senha);
     }
 
-    public InstrutorDto getInstrutorDto() {
-        return instrutorDto;
-    }
-
-    public void setInstrutorDto(InstrutorDto instrutorDto) {
-        this.instrutorDto = instrutorDto;
-    }
 
     public List<AlunoDto> getAlunoDtos() {
         return alunoDtos;

@@ -8,21 +8,18 @@ import br.com.core.coliseumfitapplication.model.users.Pessoa;
 public class AlunoDto extends Pessoa {
 
     private MatriculaDto matriculaDto;
-    private InstrutorDto instrutorDto;
     private FichaDto fichaDto;
     private ExameFisicoDto exameFisicoDto;
 
-    public AlunoDto(MatriculaDto idMatricula, InstrutorDto instrutorDto, FichaDto fichaDto, ExameFisicoDto exameFisicoDto) {
+    public AlunoDto(MatriculaDto idMatricula, FichaDto fichaDto, ExameFisicoDto exameFisicoDto) {
         matriculaDto = idMatricula;
-        this.instrutorDto = instrutorDto;
         this.fichaDto = fichaDto;
         this.exameFisicoDto = exameFisicoDto;
     }
 
-    public AlunoDto(String nome, String cpf, String email, String telefone, String senha, MatriculaDto idMatricula, InstrutorDto instrutorDto, FichaDto fichaDto, ExameFisicoDto exameFisicoDto) {
+    public AlunoDto(String nome, String cpf, String email, String telefone, String senha, MatriculaDto idMatricula, FichaDto fichaDto, ExameFisicoDto exameFisicoDto) {
         super(nome, cpf, email, telefone, senha);
         matriculaDto = idMatricula;
-        this.instrutorDto = instrutorDto;
         this.fichaDto = fichaDto;
         this.exameFisicoDto = exameFisicoDto;
     }
@@ -42,13 +39,7 @@ public class AlunoDto extends Pessoa {
         this.matriculaDto = matriculaDto;
     }
 
-    public InstrutorDto getInstrutorDto() {
-        return instrutorDto;
-    }
 
-    public void setInstrutorDto(InstrutorDto instrutorDto) {
-        this.instrutorDto = instrutorDto;
-    }
 
     public FichaDto getFichaDto() {
         return fichaDto;

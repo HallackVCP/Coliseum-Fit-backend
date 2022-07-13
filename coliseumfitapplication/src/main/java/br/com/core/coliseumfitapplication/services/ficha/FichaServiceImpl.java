@@ -2,7 +2,9 @@ package br.com.core.coliseumfitapplication.services.ficha;
 
 import br.com.core.coliseumfitapplication.dtos.ficha.FichaDto;
 import br.com.core.coliseumfitapplication.model.ficha.Ficha;
+import br.com.core.coliseumfitapplication.model.ficha.Treino;
 import br.com.core.coliseumfitapplication.repository.ficha.FichaRepository;
+import br.com.core.coliseumfitapplication.services.exceptions.ObjectNotFoundException;
 import br.com.core.coliseumfitapplication.services.ficha.interfaces.FichaService;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
@@ -27,12 +29,15 @@ public class FichaServiceImpl implements FichaService {
     }
 
     @Override
-    public Optional<Ficha> buscarFicha(Integer Id) {
-        return fichaRepository.findById(Id);
+    public Ficha buscarFicha(Integer Id) {
+        Optional<Ficha> fichaOptional = fichaRepository.findById(Id);
+        if(fichaOptional.isPresent()){
+            return fichaOptional.get();
+        }
+        else{
+            throw new ObjectNotFoundException("Objeto não encontrado! Id: " + Id + ", Tipo: " + Ficha.class);
+        }
     }
 
-    @Override
-    public void deleteById(Integer Id) {
-        fichaRepository.deleteById(Id);
-    }
+
 }
