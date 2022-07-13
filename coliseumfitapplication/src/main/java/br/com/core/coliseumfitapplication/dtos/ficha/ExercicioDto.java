@@ -5,16 +5,16 @@ public class ExercicioDto {
     private String nome;
     private int repeticoes;
     private double carga;
-    private Integer IdTreino;
+    private TreinoDto treinoDto;
 
     public ExercicioDto() {
     }
 
-    public ExercicioDto(String nome, int repeticoes, double carga, Integer idTreino) {
+    public ExercicioDto(String nome, int repeticoes, double carga, TreinoDto treinoDto) {
         this.nome = nome;
         this.repeticoes = repeticoes;
         this.carga = carga;
-        IdTreino = idTreino;
+        this.treinoDto = treinoDto;
     }
 
     public String getNome() {
@@ -41,11 +41,11 @@ public class ExercicioDto {
         this.carga = carga;
     }
 
-    public Integer getIdTreino() {
-        return IdTreino;
+    public TreinoDto getTreinoDto() {
+        return treinoDto;
     }
 
-    public void setIdTreino(Integer idTreino) {
-        IdTreino = idTreino;
+    public void setTreinoDto(TreinoDto treinoDto) {
+        this.treinoDto = treinoDto;
     }
 }

@@ -6,6 +6,9 @@ import br.com.core.coliseumfitapplication.repository.ficha.TreinoRepository;
 import br.com.core.coliseumfitapplication.services.ficha.interfaces.TreinoService;
 import org.modelmapper.ModelMapper;
 
+import java.util.List;
+import java.util.Optional;
+
 public class TreinoServiceImpl implements TreinoService {
 
     private final TreinoRepository treinoRepository;
@@ -23,7 +26,29 @@ public class TreinoServiceImpl implements TreinoService {
     }
 
     @Override
-    public Treino buscarTreinoNomeFicha(String nome, Integer IdFicha) {
-        return null;
+    public Optional<Treino> findById(Integer Id) {
+        return treinoRepository.findById(Id);
     }
+
+    @Override
+    public List<Treino> findAll() {
+        return treinoRepository.findAll();
+    }
+
+    @Override
+    public void deleteById(Integer Id) {
+        treinoRepository.deleteById(Id);
+    }
+
+    @Override
+    public void deleteAll() {
+        treinoRepository.deleteAll();
+    }
+
+    @Override
+    public List<Treino> findAllByNome(String nome) {
+        return treinoRepository.findAllByNome(nome);
+    }
+
+
 }

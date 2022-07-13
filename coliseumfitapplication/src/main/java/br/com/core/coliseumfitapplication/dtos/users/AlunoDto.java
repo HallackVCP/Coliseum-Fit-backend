@@ -1,27 +1,30 @@
 package br.com.core.coliseumfitapplication.dtos.users;
 
+import br.com.core.coliseumfitapplication.dtos.ficha.FichaDto;
+import br.com.core.coliseumfitapplication.dtos.matricula.MatriculaDto;
+import br.com.core.coliseumfitapplication.dtos.users.info.ExameFisicoDto;
 import br.com.core.coliseumfitapplication.model.users.Pessoa;
 
 public class AlunoDto extends Pessoa {
 
-    private Integer IdMatricula;
-    private Integer IdInstrutor;
-    private Integer IdFicha;
-    private Integer IdExameFisico;
+    private MatriculaDto matriculaDto;
+    private InstrutorDto instrutorDto;
+    private FichaDto fichaDto;
+    private ExameFisicoDto exameFisicoDto;
 
-    public AlunoDto(Integer idMatricula, Integer idInstrutor, Integer idFicha, Integer idExameFisico) {
-        IdMatricula = idMatricula;
-        IdInstrutor = idInstrutor;
-        IdFicha = idFicha;
-        IdExameFisico = idExameFisico;
+    public AlunoDto(MatriculaDto idMatricula, InstrutorDto instrutorDto, FichaDto fichaDto, ExameFisicoDto exameFisicoDto) {
+        matriculaDto = idMatricula;
+        this.instrutorDto = instrutorDto;
+        this.fichaDto = fichaDto;
+        this.exameFisicoDto = exameFisicoDto;
     }
 
-    public AlunoDto(String nome, String cpf, String email, String telefone, String senha, Integer idMatricula, Integer idInstrutor, Integer idFicha, Integer idExameFisico) {
+    public AlunoDto(String nome, String cpf, String email, String telefone, String senha, MatriculaDto idMatricula, InstrutorDto instrutorDto, FichaDto fichaDto, ExameFisicoDto exameFisicoDto) {
         super(nome, cpf, email, telefone, senha);
-        IdMatricula = idMatricula;
-        IdInstrutor = idInstrutor;
-        IdFicha = idFicha;
-        IdExameFisico = idExameFisico;
+        matriculaDto = idMatricula;
+        this.instrutorDto = instrutorDto;
+        this.fichaDto = fichaDto;
+        this.exameFisicoDto = exameFisicoDto;
     }
 
     public AlunoDto() {
@@ -31,35 +34,35 @@ public class AlunoDto extends Pessoa {
         super(nome, cpf, email, telefone, senha);
     }
 
-    public Integer getIdMatricula() {
-        return IdMatricula;
+    public MatriculaDto getMatriculaDto() {
+        return matriculaDto;
     }
 
-    public void setIdMatricula(Integer idMatricula) {
-        IdMatricula = idMatricula;
+    public void setMatriculaDto(MatriculaDto matriculaDto) {
+        this.matriculaDto = matriculaDto;
     }
 
-    public Integer getIdInstrutor() {
-        return IdInstrutor;
+    public InstrutorDto getInstrutorDto() {
+        return instrutorDto;
     }
 
-    public void setIdInstrutor(Integer idInstrutor) {
-        IdInstrutor = idInstrutor;
+    public void setInstrutorDto(InstrutorDto instrutorDto) {
+        this.instrutorDto = instrutorDto;
     }
 
-    public Integer getIdFicha() {
-        return IdFicha;
+    public FichaDto getFichaDto() {
+        return fichaDto;
     }
 
-    public void setIdFicha(Integer idFicha) {
-        IdFicha = idFicha;
+    public void setFichaDto(FichaDto fichaDto) {
+        this.fichaDto = fichaDto;
     }
 
-    public Integer getIdExameFisico() {
-        return IdExameFisico;
+    public ExameFisicoDto getExameFisicoDto() {
+        return exameFisicoDto;
     }
 
-    public void setIdExameFisico(Integer idExameFisico) {
-        IdExameFisico = idExameFisico;
+    public void setExameFisicoDto(ExameFisicoDto exameFisicoDto) {
+        this.exameFisicoDto = exameFisicoDto;
     }
 }

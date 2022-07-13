@@ -6,7 +6,7 @@ import java.util.List;
 
 public class AdministradorDto extends Pessoa {
 
-    private List<Integer> IdInstrutores;
+    private List<InstrutorDto> instrutorDtos;
 
     public AdministradorDto() {
     }
@@ -15,20 +15,20 @@ public class AdministradorDto extends Pessoa {
         super(nome, cpf, email, telefone, senha);
     }
 
-    public AdministradorDto(List<Integer> idInstrutores) {
-        IdInstrutores = idInstrutores;
+    public AdministradorDto(List<InstrutorDto> instrutorDtos) {
+        this.instrutorDtos = instrutorDtos;
     }
 
-    public AdministradorDto(String nome, String cpf, String email, String telefone, String senha, List<Integer> idInstrutores) {
+    public AdministradorDto(String nome, String cpf, String email, String telefone, String senha, List<InstrutorDto> instrutorDtos) {
         super(nome, cpf, email, telefone, senha);
-        IdInstrutores = idInstrutores;
+        this.instrutorDtos = instrutorDtos;
     }
 
-    public List<Integer> getIdInstrutores() {
-        return IdInstrutores;
+    public List<InstrutorDto> getInstrutorDtos() {
+        return instrutorDtos;
     }
 
-    public void setIdInstrutores(List<Integer> idInstrutores) {
-        IdInstrutores = idInstrutores;
+    public void setInstrutorDtos(List<InstrutorDto> instrutorDtos) {
+        this.instrutorDtos = instrutorDtos;
     }
 }

@@ -7,6 +7,8 @@ import br.com.core.coliseumfitapplication.services.ficha.interfaces.FichaService
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
 
+import java.util.Optional;
+
 @Service
 public class FichaServiceImpl implements FichaService {
 
@@ -25,7 +27,12 @@ public class FichaServiceImpl implements FichaService {
     }
 
     @Override
-    public Ficha buscarFicha(Integer IdAluno) {
-        return null;
+    public Optional<Ficha> buscarFicha(Integer Id) {
+        return fichaRepository.findById(Id);
+    }
+
+    @Override
+    public void deleteById(Integer Id) {
+        fichaRepository.deleteById(Id);
     }
 }

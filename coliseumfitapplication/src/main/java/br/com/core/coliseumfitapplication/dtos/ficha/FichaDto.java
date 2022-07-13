@@ -5,14 +5,14 @@ import java.util.List;
 public class FichaDto {
 
     private Integer IdAluno;
-    private List<Integer> IdTreinos;
+    private List<TreinoDto> treinoDtos;
 
     public FichaDto() {
     }
 
-    public FichaDto(Integer idAluno, List<Integer> idTreinos) {
+    public FichaDto(Integer idAluno, List<TreinoDto> treinoDtos) {
         IdAluno = idAluno;
-        IdTreinos = idTreinos;
+        this.treinoDtos = treinoDtos;
     }
 
     public Integer getIdAluno() {
@@ -23,11 +23,11 @@ public class FichaDto {
         IdAluno = idAluno;
     }
 
-    public List<Integer> getIdTreinos() {
-        return IdTreinos;
+    public List<TreinoDto> getTreinoDtos() {
+        return treinoDtos;
     }
 
-    public void setIdTreinos(List<Integer> idTreinos) {
-        IdTreinos = idTreinos;
+    public void setTreinoDtos(List<TreinoDto> treinoDtos) {
+        this.treinoDtos = treinoDtos;
     }
 }

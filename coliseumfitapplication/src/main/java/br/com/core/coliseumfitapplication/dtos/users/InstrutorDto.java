@@ -2,25 +2,22 @@ package br.com.core.coliseumfitapplication.dtos.users;
 
 import br.com.core.coliseumfitapplication.model.users.Pessoa;
 
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class InstrutorDto extends Pessoa {
 
-    @NotNull(message="{instrutor.admnistrador.nulo}")
-    private Integer IdAdministrador;
-    @NotNull(message = "{instrutor.alunos.nulo}")
-    private List<Integer> IdAlunos;
+    private InstrutorDto instrutorDto;
+    private List<AlunoDto> alunoDtos;
 
-    public InstrutorDto(Integer idAdministrador, List<Integer> idAlunos) {
-        IdAdministrador = idAdministrador;
-        IdAlunos = idAlunos;
+    public InstrutorDto(InstrutorDto instrutorDto, List<AlunoDto> alunoDtos) {
+        this.instrutorDto = instrutorDto;
+        this.alunoDtos = alunoDtos;
     }
 
-    public InstrutorDto(String nome, String cpf, String email, String telefone, String senha, Integer idAdministrador, List<Integer> idAlunos) {
+    public InstrutorDto(String nome, String cpf, String email, String telefone, String senha, InstrutorDto instrutorDto, List<AlunoDto> alunoDtos) {
         super(nome, cpf, email, telefone, senha);
-        IdAdministrador = idAdministrador;
-        IdAlunos = idAlunos;
+        this.instrutorDto = instrutorDto;
+        this.alunoDtos = alunoDtos;
     }
 
     public InstrutorDto() {
@@ -30,19 +27,19 @@ public class InstrutorDto extends Pessoa {
         super(nome, cpf, email, telefone, senha);
     }
 
-    public Integer getIdAdministrador() {
-        return IdAdministrador;
+    public InstrutorDto getInstrutorDto() {
+        return instrutorDto;
     }
 
-    public void setIdAdministrador(Integer idAdministrador) {
-        IdAdministrador = idAdministrador;
+    public void setInstrutorDto(InstrutorDto instrutorDto) {
+        this.instrutorDto = instrutorDto;
     }
 
-    public List<Integer> getIdAlunos() {
-        return IdAlunos;
+    public List<AlunoDto> getAlunoDtos() {
+        return alunoDtos;
     }
 
-    public void setIdAlunos(List<Integer> idAlunos) {
-        IdAlunos = idAlunos;
+    public void setAlunoDtos(List<AlunoDto> alunoDtos) {
+        this.alunoDtos = alunoDtos;
     }
 }

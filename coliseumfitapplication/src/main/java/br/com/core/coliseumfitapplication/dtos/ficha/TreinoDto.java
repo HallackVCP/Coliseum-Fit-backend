@@ -6,17 +6,17 @@ public class TreinoDto {
 
     private String nome;
     private String descricao;
-    private List<Integer> IdExercicios;
-    private Integer IdFicha;
+    private List<ExercicioDto> exercicioDtos;
+    private FichaDto fichaDto;
 
     public TreinoDto() {
     }
 
-    public TreinoDto(String nome, String descricao, List<Integer> idExercicios, Integer idFicha) {
+    public TreinoDto(String nome, String descricao, List<ExercicioDto> exercicioDtos, FichaDto fichaDto) {
         this.nome = nome;
         this.descricao = descricao;
-        IdExercicios = idExercicios;
-        IdFicha = idFicha;
+        this.exercicioDtos = exercicioDtos;
+        this.fichaDto = fichaDto;
     }
 
     public String getNome() {
@@ -35,19 +35,19 @@ public class TreinoDto {
         this.descricao = descricao;
     }
 
-    public List<Integer> getIdExercicios() {
-        return IdExercicios;
+    public List<ExercicioDto> getExercicioDtos() {
+        return exercicioDtos;
     }
 
-    public void setIdExercicios(List<Integer> idExercicios) {
-        IdExercicios = idExercicios;
+    public void setExercicioDtos(List<ExercicioDto> exercicioDtos) {
+        this.exercicioDtos = exercicioDtos;
     }
 
-    public Integer getIdFicha() {
-        return IdFicha;
+    public FichaDto getFichaDto() {
+        return fichaDto;
     }
 
-    public void setIdFicha(Integer idFicha) {
-        IdFicha = idFicha;
+    public void setFichaDto(FichaDto fichaDto) {
+        this.fichaDto = fichaDto;
     }
 }
