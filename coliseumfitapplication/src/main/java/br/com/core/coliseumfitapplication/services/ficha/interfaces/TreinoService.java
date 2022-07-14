@@ -1,6 +1,7 @@
 package br.com.core.coliseumfitapplication.services.ficha.interfaces;
 
 import br.com.core.coliseumfitapplication.dtos.ficha.TreinoDto;
+import br.com.core.coliseumfitapplication.model.ficha.Ficha;
 import br.com.core.coliseumfitapplication.model.ficha.Treino;
 
 import java.util.List;
@@ -12,8 +13,6 @@ public interface TreinoService {
 
     public Treino findById(Integer Id);
 
-    public List<Treino> findAll();
-
     public void deleteById(Integer Id);
 
     public void deleteAll();
@@ -22,5 +21,5 @@ public interface TreinoService {
 
     public Treino updateById(Integer Id, TreinoDto treinoDto);
 
-    public List<Treino> findAllByFichaId(Integer fichaId);
+    public List<TreinoDto> findAllByFicha(Ficha ficha);
 }

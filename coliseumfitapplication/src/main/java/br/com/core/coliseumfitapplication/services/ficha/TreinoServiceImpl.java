@@ -8,6 +8,7 @@ import br.com.core.coliseumfitapplication.repository.ficha.TreinoRepository;
 import br.com.core.coliseumfitapplication.services.exceptions.ObjectNotFoundException;
 import br.com.core.coliseumfitapplication.services.ficha.interfaces.TreinoService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,10 +42,7 @@ public class TreinoServiceImpl implements TreinoService {
         }
     }
 
-    @Override
-    public List<Treino> findAll() {
-        return treinoRepository.findAll();
-    }
+
 
     @Override
     public void deleteById(Integer Id) {
@@ -77,9 +75,8 @@ public class TreinoServiceImpl implements TreinoService {
     }
 
     @Override
-    public List<Treino> findAllByFichaId(Integer fichaId) {
-        //return treinoRepository.findAllByFichaId(fichaId);
-        return null;
+    public List<TreinoDto> findAllByFicha(Ficha ficha) {
+        return modelMapper.map(treinoRepository.findAllByFicha(ficha), new TypeToken<List<TreinoDto>>(){}.getType());
     }
 
 

@@ -14,7 +14,7 @@ public class Treino implements Serializable {
 
     @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id;
+    private Integer id;
 
     private String nome;
 
@@ -36,13 +36,13 @@ public class Treino implements Serializable {
     }
 
     public Treino(Integer id, String nome, String descricao) {
-        Id = id;
+        this.id = id;
         this.nome = nome;
         this.descricao = descricao;
     }
 
-    public int getId() {
-        return Id;
+    public Integer getId() {
+        return id;
     }
 
     public void setId(Integer Id) {
@@ -88,11 +88,11 @@ public class Treino implements Serializable {
 
         Treino treino = (Treino) o;
 
-        return Id == treino.Id;
+        return id == treino.id;
     }
 
     @Override
     public int hashCode() {
-        return Id;
+        return id;
     }
 }

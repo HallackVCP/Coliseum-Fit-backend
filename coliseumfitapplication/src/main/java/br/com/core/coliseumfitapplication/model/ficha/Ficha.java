@@ -24,15 +24,18 @@ public class Ficha implements Serializable {
     @OneToMany
     private List<Treino> treinos = new ArrayList<>();
 
+    private boolean isAlterarFicha;
+
     public Ficha() {
     }
 
-    public Ficha(Integer Id) {
-        Id = Id;
+    public Ficha(Integer Id, boolean isAlterarFicha) {
+        this.Id = Id;
+        this.isAlterarFicha = isAlterarFicha;
 
     }
 
-    public int getId() {
+    public Integer getId() {
         return Id;
     }
 
@@ -48,6 +51,15 @@ public class Ficha implements Serializable {
     public void setTreinos(List<Treino> treinos) {
         this.treinos = treinos;
     }
+
+    public boolean isAlterarFicha() {
+        return isAlterarFicha;
+    }
+
+    public void setAlterarFicha(boolean alterarFicha) {
+        isAlterarFicha = alterarFicha;
+    }
+
 
     @Override
     public boolean equals(Object o) {

@@ -2,6 +2,7 @@ package br.com.core.coliseumfitapplication.controller.ficha;
 
 
 import br.com.core.coliseumfitapplication.dtos.ficha.TreinoDto;
+import br.com.core.coliseumfitapplication.model.ficha.Ficha;
 import br.com.core.coliseumfitapplication.model.ficha.Treino;
 import br.com.core.coliseumfitapplication.services.ficha.TreinoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/treino")
@@ -30,6 +32,11 @@ public class TreinoController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().
                 path("/{id}").buildAndExpand(treino.getId()).toUri();
         return ResponseEntity.created(uri).build();
+    }
+
+    @GetMapping(value = "/buscar-treinos")
+    public ResponseEntity<List<TreinoDto>> findAllTreinosFica(Ficha ficha){
+        return ResponseEntity.ok().body(treinoService.findAllByFicha(ficha));
     }
 
 

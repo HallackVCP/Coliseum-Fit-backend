@@ -3,6 +3,7 @@ package br.com.core.coliseumfitapplication.controller.ficha;
 
 import br.com.core.coliseumfitapplication.dtos.ficha.ExercicioDto;
 import br.com.core.coliseumfitapplication.model.ficha.Exercicio;
+import br.com.core.coliseumfitapplication.model.ficha.Treino;
 import br.com.core.coliseumfitapplication.services.ficha.ExercicioServiceImpl;
 import br.com.core.coliseumfitapplication.services.ficha.interfaces.ExercicioService;
 import org.modelmapper.ModelMapper;
@@ -36,8 +37,8 @@ public class ExercicioController {
     }
 
     @GetMapping(value = "/listar-exercicios{treinoId}")
-    public ResponseEntity<List<ExercicioDto>> findAll(@PathVariable Integer treinoId){
-        List<Exercicio> exercicios = exercicioService.findAll(treinoId);
+    public ResponseEntity<List<ExercicioDto>> findAll(@PathVariable Treino treino){
+        List<Exercicio> exercicios = exercicioService.findAll(treino);
         return ResponseEntity.ok()
                 .body(modelMapper.map(exercicios, new TypeToken<List<ExercicioDto>>(){}.getType()));
     }
@@ -67,6 +68,8 @@ public class ExercicioController {
         exercicioService.deleteById(Id);
         return ResponseEntity.noContent().build();
     }
+
+
 
 
 

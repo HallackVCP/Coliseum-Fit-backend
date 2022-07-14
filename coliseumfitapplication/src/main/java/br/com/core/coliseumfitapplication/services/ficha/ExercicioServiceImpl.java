@@ -3,6 +3,7 @@ package br.com.core.coliseumfitapplication.services.ficha;
 import br.com.core.coliseumfitapplication.dtos.ficha.ExercicioDto;
 import br.com.core.coliseumfitapplication.model.ficha.Exercicio;
 import br.com.core.coliseumfitapplication.model.ficha.Ficha;
+import br.com.core.coliseumfitapplication.model.ficha.Treino;
 import br.com.core.coliseumfitapplication.repository.ficha.ExercicioRepository;
 import br.com.core.coliseumfitapplication.services.exceptions.ObjectNotFoundException;
 import br.com.core.coliseumfitapplication.services.ficha.interfaces.ExercicioService;
@@ -44,9 +45,8 @@ public class ExercicioServiceImpl implements ExercicioService {
     }
 
     @Override
-    public List<Exercicio> findAll(Integer treinoId) {
-        //return exercicioRepository.findAllByTreinoId(treinoId);
-        return null;
+    public List<Exercicio> findAll(Treino treino) {
+        return exercicioRepository.findAllByTreinoId(treino);
     }
 
     @Override
