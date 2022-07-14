@@ -45,8 +45,8 @@ public class ExercicioServiceImpl implements ExercicioService {
 
     @Override
     public List<Exercicio> findAll(Integer treinoId) {
-        return null;
         //return exercicioRepository.findAllByTreinoId(treinoId);
+        return null;
     }
 
     @Override

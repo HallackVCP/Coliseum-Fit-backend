@@ -22,8 +22,13 @@ public class Treino implements Serializable {
 
 
     @OneToMany
-    @JsonIgnore
     private List<Exercicio> exercicios = new ArrayList<>();
+
+
+    @ManyToOne
+    @JoinColumn(name = "ficha_id")
+    @JsonIgnore
+    private Ficha ficha;
 
 
 
@@ -68,6 +73,13 @@ public class Treino implements Serializable {
         this.exercicios = exercicios;
     }
 
+    public Ficha getFicha() {
+        return ficha;
+    }
+
+    public void setFicha(Ficha ficha) {
+        this.ficha = ficha;
+    }
 
     @Override
     public boolean equals(Object o) {

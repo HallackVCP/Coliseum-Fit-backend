@@ -76,5 +76,11 @@ public class TreinoServiceImpl implements TreinoService {
         }
     }
 
+    @Override
+    public List<Treino> findAllByFichaId(Integer fichaId) {
+        //return treinoRepository.findAllByFichaId(fichaId);
+        return null;
+    }
+
 
 }

@@ -1,5 +1,7 @@
 package br.com.core.coliseumfitapplication.model.ficha;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -18,6 +20,11 @@ public class Exercicio implements Serializable {
 
     private int series;
 
+    @ManyToOne
+    @JoinColumn(name = "treino_id")
+    @JsonIgnore
+    private Treino treino;
+
 
 
     public Exercicio() {
@@ -31,7 +38,7 @@ public class Exercicio implements Serializable {
         this.series=series;
     }
 
-    public int getId() {
+    public Integer getId() {
         return Id;
     }
 
@@ -69,6 +76,14 @@ public class Exercicio implements Serializable {
 
     public void setSeries(int series) {
         this.series = series;
+    }
+
+    public Treino getTreino() {
+        return treino;
+    }
+
+    public void setTreino(Treino treino) {
+        this.treino = treino;
     }
 
     @Override

@@ -4,6 +4,9 @@ package br.com.core.coliseumfitapplication.controller.ficha;
 import br.com.core.coliseumfitapplication.dtos.ficha.ExercicioDto;
 import br.com.core.coliseumfitapplication.model.ficha.Exercicio;
 import br.com.core.coliseumfitapplication.services.ficha.ExercicioServiceImpl;
+import br.com.core.coliseumfitapplication.services.ficha.interfaces.ExercicioService;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,17 +20,26 @@ import java.util.List;
 public class ExercicioController {
 
     @Autowired
-    private ExercicioServiceImpl exercicioService;
+    ExercicioService exercicioService;
 
+    private final ModelMapper modelMapper;
+
+    public ExercicioController(ExercicioService exercicioService, ModelMapper modelMapper) {
+        this.exercicioService = exercicioService;
+        this.modelMapper = modelMapper;
+    }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Exercicio> findById(@PathVariable Integer Id){
-        return ResponseEntity.ok().body(exercicioService.findById(Id));
+    public ResponseEntity<ExercicioDto> findById(@PathVariable Integer Id){
+        Exercicio exercicio = exercicioService.findById(Id);
+        return ResponseEntity.ok().body(modelMapper.map(exercicio, ExercicioDto.class));
     }
 
     @GetMapping(value = "/listar-exercicios{treinoId}")
-    public ResponseEntity<List<Exercicio>> findAll(@PathVariable Integer treinoId){
-        return ResponseEntity.ok().body(exercicioService.findAll(treinoId));
+    public ResponseEntity<List<ExercicioDto>> findAll(@PathVariable Integer treinoId){
+        List<Exercicio> exercicios = exercicioService.findAll(treinoId);
+        return ResponseEntity.ok()
+                .body(modelMapper.map(exercicios, new TypeToken<List<ExercicioDto>>(){}.getType()));
     }
 
     @DeleteMapping(value = "/deletar-todos{exercicios}")

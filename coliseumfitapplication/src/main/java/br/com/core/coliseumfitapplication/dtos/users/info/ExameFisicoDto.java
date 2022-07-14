@@ -7,6 +7,8 @@ public class ExameFisicoDto {
     private double peso;
     private double altura;
 
+    private AlunoDto alunoDto;
+
 
     public ExameFisicoDto() {
     }
@@ -33,5 +35,11 @@ public class ExameFisicoDto {
         this.altura = altura;
     }
 
+    public AlunoDto getAlunoDto() {
+        return alunoDto;
+    }
 
+    public void setAlunoDto(AlunoDto alunoDto) {
+        this.alunoDto = alunoDto;
+    }
 }

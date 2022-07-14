@@ -4,6 +4,7 @@ import br.com.core.coliseumfitapplication.model.ficha.Ficha;
 import br.com.core.coliseumfitapplication.model.ficha.Treino;
 import br.com.core.coliseumfitapplication.model.matricula.Matricula;
 import br.com.core.coliseumfitapplication.model.users.info.ExameFisico;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,6 +17,11 @@ public class Aluno extends Pessoa implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
 
+    @ManyToOne
+    @JoinColumn(name = "instrutor_id")
+    @JsonIgnore
+    private Instrutor instrutor;
+
 
     public Aluno() {
     }
@@ -24,9 +30,9 @@ public class Aluno extends Pessoa implements Serializable {
         Id = id;
     }
 
-    public Aluno(String nome, String cpf, String email, String telefone, String senha, Integer id) {
+    public Aluno(String nome, String cpf, String email, String telefone, String senha, Integer Id) {
         super(nome, cpf, email, telefone, senha);
-        Id = id;
+        this.Id = Id;
     }
 
     public Integer getId() {
@@ -36,6 +42,15 @@ public class Aluno extends Pessoa implements Serializable {
     public void setId(Integer Id) {
         Id = Id;
     }
+
+    public Instrutor getInstrutor() {
+        return instrutor;
+    }
+
+    public void setInstrutor(Instrutor instrutor) {
+        this.instrutor = instrutor;
+    }
+
 
 
 

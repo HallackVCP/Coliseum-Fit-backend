@@ -10,6 +10,7 @@ public class MatriculaDto {
 
     private StatusMatricula status;
     private Plano plano;
+    private AlunoDto alunoDto;
 
 
     public MatriculaDto() {
@@ -45,4 +46,11 @@ public class MatriculaDto {
         this.plano = plano;
     }
 
+    public AlunoDto getAlunoDto() {
+        return alunoDto;
+    }
+
+    public void setAlunoDto(AlunoDto alunoDto) {
+        this.alunoDto = alunoDto;
+    }
 }

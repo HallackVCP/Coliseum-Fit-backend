@@ -1,21 +1,21 @@
 package br.com.core.coliseumfitapplication.dtos.ficha;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TreinoDto {
 
     private String nome;
     private String descricao;
-    private List<ExercicioDto> exercicioDtos;
+    private List<ExercicioDto> exercicioDtos = new ArrayList<>();
 
 
     public TreinoDto() {
     }
 
-    public TreinoDto(String nome, String descricao, List<ExercicioDto> exercicioDtos) {
+    public TreinoDto(String nome, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
-        this.exercicioDtos = exercicioDtos;
     }
 
     public String getNome() {

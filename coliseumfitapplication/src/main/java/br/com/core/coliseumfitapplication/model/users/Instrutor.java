@@ -18,6 +18,11 @@ public class Instrutor extends Pessoa implements Serializable {
     @OneToMany
     private List<Aluno> alunos = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "administrador_id")
+    @JsonIgnore
+    private Administrador administrador;
+
     public Instrutor(Integer Id) {
         Id = Id;
     }
@@ -45,6 +50,14 @@ public class Instrutor extends Pessoa implements Serializable {
 
     public void setAlunos(List<Aluno> alunos) {
         this.alunos = alunos;
+    }
+
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
     }
 
     @Override

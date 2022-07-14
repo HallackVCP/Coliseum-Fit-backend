@@ -21,4 +21,6 @@ public interface TreinoService {
     public List<Treino> findAllByNome(String nome);
 
     public Treino updateById(Integer Id, TreinoDto treinoDto);
+
+    public List<Treino> findAllByFichaId(Integer fichaId);
 }

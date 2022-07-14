@@ -4,6 +4,7 @@ package br.com.core.coliseumfitapplication.controller.ficha;
 import br.com.core.coliseumfitapplication.dtos.ficha.FichaDto;
 import br.com.core.coliseumfitapplication.model.ficha.Ficha;
 import br.com.core.coliseumfitapplication.services.ficha.FichaServiceImpl;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,12 @@ public class FichaController {
     @Autowired
     private FichaServiceImpl fichaService;
 
+    private final ModelMapper modelMapper;
 
+    public FichaController(ModelMapper modelMapper, FichaServiceImpl fichaService) {
+        this.modelMapper = modelMapper;
+        this.fichaService = fichaService;
+    }
 
 
     @GetMapping(value = "/{id}")
