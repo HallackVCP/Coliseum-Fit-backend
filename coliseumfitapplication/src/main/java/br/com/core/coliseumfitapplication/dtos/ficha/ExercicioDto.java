@@ -5,15 +5,17 @@ public class ExercicioDto {
     private String nome;
     private int repeticoes;
     private double carga;
+    private int series;
 
 
     public ExercicioDto() {
     }
 
-    public ExercicioDto(String nome, int repeticoes, double carga) {
+    public ExercicioDto(String nome, int repeticoes, double carga, int series) {
         this.nome = nome;
         this.repeticoes = repeticoes;
         this.carga = carga;
+        this.series=series;
 
     }
 
@@ -41,5 +43,11 @@ public class ExercicioDto {
         this.carga = carga;
     }
 
+    public int getSeries() {
+        return series;
+    }
 
+    public void setSeries(int series) {
+        this.series = series;
+    }
 }

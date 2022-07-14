@@ -8,12 +8,15 @@ import javax.persistence.*;
 @Entity
 public class ExameFisico {
 
-    @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Integer Id;
 
     private double peso;
     private double altura;
+
+    @OneToOne
+    @MapsId
+    private Aluno aluno;
 
 
 
@@ -52,6 +55,13 @@ public class ExameFisico {
         Id = Id;
     }
 
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
 
     @Override
     public boolean equals(Object o) {

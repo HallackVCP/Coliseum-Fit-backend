@@ -16,33 +16,17 @@ public class Aluno extends Pessoa implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
 
-    @OneToOne
-    private Matricula matricula;
-
-
-
-    @OneToOne
-    private ExameFisico exameFisico;
-
-    @OneToOne
-    private Ficha ficha;
 
     public Aluno() {
     }
 
-    public Aluno(Integer id, Matricula matricula, ExameFisico exameFisico, Ficha ficha) {
+    public Aluno(Integer id) {
         Id = id;
-        this.matricula = matricula;
-        this.exameFisico = exameFisico;
-        this.ficha = ficha;
     }
 
-    public Aluno(String nome, String cpf, String email, String telefone, String senha, Integer id, Matricula matricula, ExameFisico exameFisico, Ficha ficha) {
+    public Aluno(String nome, String cpf, String email, String telefone, String senha, Integer id) {
         super(nome, cpf, email, telefone, senha);
         Id = id;
-        this.matricula = matricula;
-        this.exameFisico = exameFisico;
-        this.ficha = ficha;
     }
 
     public Integer getId() {
@@ -53,29 +37,7 @@ public class Aluno extends Pessoa implements Serializable {
         Id = Id;
     }
 
-    public Matricula getMatricula() {
-        return matricula;
-    }
 
-    public void setMatricula(Matricula matricula) {
-        this.matricula = matricula;
-    }
-
-    public ExameFisico getExameFisico() {
-        return exameFisico;
-    }
-
-    public void setExameFisico(ExameFisico exameFisico) {
-        this.exameFisico = exameFisico;
-    }
-
-    public Ficha getFicha() {
-        return ficha;
-    }
-
-    public void setFicha(Ficha ficha) {
-        this.ficha = ficha;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -84,14 +46,11 @@ public class Aluno extends Pessoa implements Serializable {
 
         Aluno aluno = (Aluno) o;
 
-        if (Id != aluno.Id) return false;
-        return matricula.equals(aluno.matricula);
+        return Id != null ? Id.equals(aluno.Id) : aluno.Id == null;
     }
 
     @Override
     public int hashCode() {
-        int result = Id;
-        result = 31 * result + matricula.hashCode();
-        return result;
+        return Id != null ? Id.hashCode() : 0;
     }
 }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -13,22 +14,22 @@ public class Ficha implements Serializable {
 
 
     @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
 
 
-
+    @OneToOne
+    @MapsId
+    private Aluno aluno;
 
     @OneToMany
-    @JsonIgnore
-    private List<Treino> treinos;
+    private List<Treino> treinos = new ArrayList<>();
 
     public Ficha() {
     }
 
-    public Ficha(Integer Id, List<Treino> treinos) {
+    public Ficha(Integer Id) {
         Id = Id;
-        this.treinos = treinos;
+
     }
 
     public int getId() {

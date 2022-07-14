@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,18 +16,15 @@ public class Instrutor extends Pessoa implements Serializable {
     private Integer Id;
 
     @OneToMany
-    @JsonIgnore
-    private List<Aluno> alunos;
+    private List<Aluno> alunos = new ArrayList<>();
 
-    public Instrutor(Integer Id, List<Aluno> alunos) {
+    public Instrutor(Integer Id) {
         Id = Id;
-        this.alunos = alunos;
     }
 
-    public Instrutor(String nome, String cpf, String email, String telefone, String senha, Integer Id, List<Aluno> alunos) {
+    public Instrutor(String nome, String cpf, String email, String telefone, String senha, Integer Id) {
         super(nome, cpf, email, telefone, senha);
         Id = Id;
-        this.alunos = alunos;
     }
 
     public Instrutor() {

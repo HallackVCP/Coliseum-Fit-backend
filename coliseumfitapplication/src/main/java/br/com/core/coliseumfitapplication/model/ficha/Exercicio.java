@@ -16,16 +16,19 @@ public class Exercicio implements Serializable {
 
     private double carga;
 
+    private int series;
+
 
 
     public Exercicio() {
     }
 
-    public Exercicio(Integer Id, String nome, int repeticoes, double carga) {
-        Id = Id;
+    public Exercicio(Integer Id, String nome, int repeticoes, double carga, int series) {
+        this.Id = Id;
         this.nome = nome;
         this.repeticoes = repeticoes;
         this.carga = carga;
+        this.series=series;
     }
 
     public int getId() {
@@ -60,6 +63,13 @@ public class Exercicio implements Serializable {
         this.carga = carga;
     }
 
+    public int getSeries() {
+        return series;
+    }
+
+    public void setSeries(int series) {
+        this.series = series;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,23 +19,20 @@ public class Administrador extends Pessoa implements Serializable {
 
 
     @OneToMany
-    @JsonIgnore
-    private List<Instrutor> instrutores;
+    private List<Instrutor> instrutores = new ArrayList<>();
 
     public Administrador() {
     }
 
-    public Administrador(Integer id, boolean isAdmin, List<Instrutor> instrutores) {
+    public Administrador(Integer id, boolean isAdmin) {
         Id = id;
         this.isAdmin = isAdmin;
-        this.instrutores = instrutores;
     }
 
-    public Administrador(String nome, String cpf, String email, String telefone, String senha, Integer id, boolean isAdmin, List<Instrutor> instrutores) {
+    public Administrador(String nome, String cpf, String email, String telefone, String senha, Integer id, boolean isAdmin) {
         super(nome, cpf, email, telefone, senha);
         Id = id;
         this.isAdmin = isAdmin;
-        this.instrutores = instrutores;
     }
 
     public Administrador(Integer Id, String nome, String cpf, String email, String telefone, String senha) {

@@ -9,12 +9,15 @@ import java.io.Serializable;
 @Entity
 public class Matricula implements Serializable {
 
-    @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Integer Id;
 
     private StatusMatricula status;
     private Plano plano;
+
+    @OneToOne
+    @MapsId
+    private Aluno aluno;
 
 
 
@@ -53,7 +56,13 @@ public class Matricula implements Serializable {
         Id = Id;
     }
 
+    public Aluno getAluno() {
+        return aluno;
+    }
 
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
 
     @Override
     public boolean equals(Object o) {

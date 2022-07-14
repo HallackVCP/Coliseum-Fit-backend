@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,18 +23,17 @@ public class Treino implements Serializable {
 
     @OneToMany
     @JsonIgnore
-    private List<Exercicio> exercicios;
+    private List<Exercicio> exercicios = new ArrayList<>();
 
 
 
     public Treino() {
     }
 
-    public Treino(Integer id, String nome, String descricao, List<Exercicio> exercicios) {
+    public Treino(Integer id, String nome, String descricao) {
         Id = id;
         this.nome = nome;
         this.descricao = descricao;
-        this.exercicios = exercicios;
     }
 
     public int getId() {
