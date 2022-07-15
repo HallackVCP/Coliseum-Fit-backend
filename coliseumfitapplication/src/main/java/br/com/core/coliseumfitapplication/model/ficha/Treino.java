@@ -10,6 +10,7 @@ import java.util.List;
 
 
 @Entity
+@Table(name = "tb_treinos")
 public class Treino implements Serializable {
 
     @javax.persistence.Id

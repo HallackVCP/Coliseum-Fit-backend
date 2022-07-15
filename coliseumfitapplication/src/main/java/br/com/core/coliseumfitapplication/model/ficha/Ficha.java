@@ -10,6 +10,7 @@ import java.util.List;
 
 
 @Entity
+@Table(name = "tb_fichas")
 public class Ficha implements Serializable {
 
 

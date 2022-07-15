@@ -6,6 +6,7 @@ import br.com.core.coliseumfitapplication.model.users.Aluno;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "tb_exames_fisicos")
 public class ExameFisico {
 
     @Id

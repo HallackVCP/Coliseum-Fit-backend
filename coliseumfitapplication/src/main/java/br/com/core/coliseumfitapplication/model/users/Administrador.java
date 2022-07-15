@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "tb_administradores")
 public class Administrador extends Pessoa implements Serializable {
 
     @javax.persistence.Id

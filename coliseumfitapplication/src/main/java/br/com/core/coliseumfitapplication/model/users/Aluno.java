@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
+@Table(name = "tb_alunos")
 public class Aluno extends Pessoa implements Serializable {
 
     @Id
