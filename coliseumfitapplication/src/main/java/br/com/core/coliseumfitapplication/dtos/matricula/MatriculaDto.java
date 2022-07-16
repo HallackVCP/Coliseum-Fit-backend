@@ -6,29 +6,26 @@ import br.com.core.coliseumfitapplication.model.matricula.StatusMatricula;
 
 public class MatriculaDto {
 
-    private Integer Id;
 
     private StatusMatricula status;
     private Plano plano;
-    private AlunoDto alunoDto;
+
 
 
     public MatriculaDto() {
     }
 
-    public MatriculaDto(Integer id, StatusMatricula status, Plano plano) {
-        Id = id;
+    public MatriculaDto(StatusMatricula status, Plano plano) {
         this.status = status;
         this.plano = plano;
     }
 
-    public Integer getId() {
-        return Id;
+    public MatriculaDto(String status, String plano){
+        this.status = StatusMatricula.valueOf(status);
+        this.plano = Plano.valueOf(plano);
     }
 
-    public void setId(Integer id) {
-        Id = id;
-    }
+
 
     public StatusMatricula getStatus() {
         return status;
@@ -46,11 +43,4 @@ public class MatriculaDto {
         this.plano = plano;
     }
 
-    public AlunoDto getAlunoDto() {
-        return alunoDto;
-    }
-
-    public void setAlunoDto(AlunoDto alunoDto) {
-        this.alunoDto = alunoDto;
-    }
 }

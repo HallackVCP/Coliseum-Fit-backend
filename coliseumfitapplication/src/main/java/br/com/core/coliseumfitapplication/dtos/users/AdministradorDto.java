@@ -7,7 +7,6 @@ import java.util.List;
 
 public class AdministradorDto extends Pessoa {
 
-    private List<InstrutorDto> instrutorDtos = new ArrayList<>();
 
     public AdministradorDto() {
     }
@@ -16,12 +15,4 @@ public class AdministradorDto extends Pessoa {
         super(nome, cpf, email, telefone, senha);
     }
 
-
-    public List<InstrutorDto> getInstrutorDtos() {
-        return instrutorDtos;
-    }
-
-    public void setInstrutorDtos(List<InstrutorDto> instrutorDtos) {
-        this.instrutorDtos = instrutorDtos;
-    }
 }

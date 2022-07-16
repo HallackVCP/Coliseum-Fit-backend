@@ -19,8 +19,7 @@ public class Administrador extends Pessoa implements Serializable {
     private boolean isAdmin = true;
 
 
-    @OneToMany
-    private List<Instrutor> instrutores = new ArrayList<>();
+
 
     public Administrador() {
     }
@@ -57,13 +56,7 @@ public class Administrador extends Pessoa implements Serializable {
         isAdmin = admin;
     }
 
-    public List<Instrutor> getInstrutores() {
-        return instrutores;
-    }
 
-    public void setInstrutores(List<Instrutor> instrutores) {
-        this.instrutores = instrutores;
-    }
 
     @Override
     public boolean equals(Object o) {

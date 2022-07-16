@@ -7,7 +7,7 @@ public class TreinoDto {
 
     private String nome;
     private String descricao;
-    private List<ExercicioDto> exercicioDtos = new ArrayList<>();
+
 
 
     public TreinoDto() {
@@ -34,12 +34,5 @@ public class TreinoDto {
         this.descricao = descricao;
     }
 
-    public List<ExercicioDto> getExercicioDtos() {
-        return exercicioDtos;
-    }
-
-    public void setExercicioDtos(List<ExercicioDto> exercicioDtos) {
-        this.exercicioDtos = exercicioDtos;
-    }
 
 }

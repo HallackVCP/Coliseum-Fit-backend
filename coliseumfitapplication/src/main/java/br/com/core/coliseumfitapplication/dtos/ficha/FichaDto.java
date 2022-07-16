@@ -5,7 +5,6 @@ import java.util.List;
 
 public class FichaDto {
 
-    private List<TreinoDto> treinoDtos = new ArrayList<>();
 
     private boolean alterarFicha;
 
@@ -18,13 +17,6 @@ public class FichaDto {
         this.alterarFicha = alterarFicha;
     }
 
-    public List<TreinoDto> getTreinoDtos() {
-        return treinoDtos;
-    }
-
-    public void setTreinoDtos(List<TreinoDto> treinoDtos) {
-        this.treinoDtos = treinoDtos;
-    }
 
     public boolean isAlterarFicha() {
         return alterarFicha;

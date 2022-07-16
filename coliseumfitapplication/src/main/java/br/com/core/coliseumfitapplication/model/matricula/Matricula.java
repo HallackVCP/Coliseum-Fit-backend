@@ -49,12 +49,12 @@ public class Matricula implements Serializable {
         this.plano = plano;
     }
 
-    public int getId() {
+    public Integer getId() {
         return Id;
     }
 
     public void setId(Integer Id) {
-        Id = Id;
+        this.Id = Id;
     }
 
     public Aluno getAluno() {

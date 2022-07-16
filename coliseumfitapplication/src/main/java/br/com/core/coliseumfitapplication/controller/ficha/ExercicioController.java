@@ -59,7 +59,7 @@ public class ExercicioController {
     public ResponseEntity<Void> criarExercicio(@RequestBody ExercicioDto exercicioDto){
         Exercicio exercicio = exercicioService.salvar(exercicioDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().
-                path("/{id}").buildAndExpand(exercicio.getId()).toUri();
+                path("").buildAndExpand().toUri();
         return ResponseEntity.created(uri).build();
     }
 

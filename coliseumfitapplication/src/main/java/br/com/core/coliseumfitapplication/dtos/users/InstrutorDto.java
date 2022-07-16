@@ -8,12 +8,6 @@ import java.util.List;
 public class InstrutorDto extends Pessoa {
 
 
-    private List<AlunoDto> alunoDtos = new ArrayList<>();
-
-
-
-
-
     public InstrutorDto() {
     }
 
@@ -21,12 +15,4 @@ public class InstrutorDto extends Pessoa {
         super(nome, cpf, email, telefone, senha);
     }
 
-
-    public List<AlunoDto> getAlunoDtos() {
-        return alunoDtos;
-    }
-
-    public void setAlunoDtos(List<AlunoDto> alunoDtos) {
-        this.alunoDtos = alunoDtos;
-    }
 }

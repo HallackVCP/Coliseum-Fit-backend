@@ -12,6 +12,8 @@ import br.com.core.coliseumfitapplication.model.ficha.Exercicio;
 import br.com.core.coliseumfitapplication.model.ficha.Ficha;
 import br.com.core.coliseumfitapplication.model.ficha.Treino;
 import br.com.core.coliseumfitapplication.model.matricula.Matricula;
+import br.com.core.coliseumfitapplication.model.matricula.Plano;
+import br.com.core.coliseumfitapplication.model.matricula.StatusMatricula;
 import br.com.core.coliseumfitapplication.model.users.Administrador;
 import br.com.core.coliseumfitapplication.model.users.Aluno;
 import br.com.core.coliseumfitapplication.model.users.Instrutor;
@@ -71,9 +73,10 @@ public class ModelMapperConfig {
         PropertyMap<Matricula, MatriculaDto> MatriculaDTOPropertyMap = new PropertyMap<Matricula, MatriculaDto>() {
             @Override
             protected void configure() {
-                //map();
+
             }
         };
+
 
 
 
