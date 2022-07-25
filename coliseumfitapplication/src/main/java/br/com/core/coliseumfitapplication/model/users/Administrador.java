@@ -16,7 +16,7 @@ public class Administrador extends Pessoa implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
 
-    private boolean isAdmin = true;
+
 
 
 
@@ -24,15 +24,15 @@ public class Administrador extends Pessoa implements Serializable {
     public Administrador() {
     }
 
-    public Administrador(Integer id, boolean isAdmin) {
+    public Administrador(Integer id) {
         Id = id;
-        this.isAdmin = isAdmin;
+
     }
 
-    public Administrador(String nome, String cpf, String email, String telefone, String senha, Integer id, boolean isAdmin) {
+    public Administrador(String nome, String cpf, String email, String telefone, String senha, Integer id) {
         super(nome, cpf, email, telefone, senha);
         Id = id;
-        this.isAdmin = isAdmin;
+
     }
 
     public Administrador(Integer Id, String nome, String cpf, String email, String telefone, String senha) {
@@ -48,13 +48,7 @@ public class Administrador extends Pessoa implements Serializable {
         Id = Id;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
-    }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
 
 
 

@@ -22,13 +22,21 @@ public class MatriculaController {
 
 
     @PostMapping(value = "/criar-matricula/{Id}")
-    public ResponseEntity<MatriculaDto> criarMatricula(@PathVariable Integer Id, @RequestBody MatriculaDto matriculaDto){
+    public ResponseEntity<Void> criarMatricula(@PathVariable Integer Id, @RequestBody MatriculaDto matriculaDto){
         Matricula matricula = matriculaService.save(matriculaDto, Id);
-        return ResponseEntity.ok().body(modelMapper.map(matricula, MatriculaDto.class));
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping (value = "/matriculas")
     public ResponseEntity<List<Matricula>> findAll(){
         return ResponseEntity.ok().body(matriculaService.findAll());
+    }
+
+    @PostMapping(value = "/atualizar-matricula/{id}")
+    public ResponseEntity<Void> atualizarMatricula(@PathVariable Integer Id, @RequestBody MatriculaDto matriculaDto){
+
+        Matricula matricula = matriculaService.updateById(Id, matriculaDto);
+
+        return ResponseEntity.noContent().build();
     }
 }

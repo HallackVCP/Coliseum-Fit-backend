@@ -21,11 +21,6 @@ public class AlunoController {
     @Autowired
     AlunoService alunoService;
 
-    @PostMapping(value = "/criar-aluno")
-    public ResponseEntity<Aluno> criarAluno(@RequestBody AlunoDto alunoDto){
-        Aluno aluno = alunoService.save(alunoDto);
-        return ResponseEntity.ok().body(aluno);
-    }
 
     @GetMapping(value = "/findAll")
     public ResponseEntity<List<Aluno>> findAll(@RequestBody Instrutor instrutor){

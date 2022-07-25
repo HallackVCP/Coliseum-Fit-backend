@@ -13,7 +13,10 @@ public class Matricula implements Serializable {
     @Id
     private Integer Id;
 
+    @Enumerated(EnumType.STRING)
     private StatusMatricula status;
+
+    @Enumerated(EnumType.STRING)
     private Plano plano;
 
     @OneToOne

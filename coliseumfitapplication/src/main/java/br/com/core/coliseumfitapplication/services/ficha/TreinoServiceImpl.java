@@ -75,8 +75,8 @@ public class TreinoServiceImpl implements TreinoService {
     }
 
     @Override
-    public List<TreinoDto> findAllByFicha(Ficha ficha) {
-        return modelMapper.map(treinoRepository.findAllByFicha(ficha), new TypeToken<List<TreinoDto>>(){}.getType());
+    public List<Treino> findAllByFicha(Ficha ficha) {
+        return treinoRepository.findAllByFicha(ficha);
     }
 
 

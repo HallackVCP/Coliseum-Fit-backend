@@ -36,7 +36,7 @@ public class ExercicioController {
         return ResponseEntity.ok().body(modelMapper.map(exercicio, ExercicioDto.class));
     }
 
-    @GetMapping(value = "/listar-exercicios{treinoId}")
+    @GetMapping(value = "/listar-exercicios")
     public ResponseEntity<List<ExercicioDto>> findAll(@PathVariable Treino treino){
         List<Exercicio> exercicios = exercicioService.findAll(treino);
         return ResponseEntity.ok()

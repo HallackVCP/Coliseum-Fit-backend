@@ -21,5 +21,5 @@ public interface TreinoService {
 
     public Treino updateById(Integer Id, TreinoDto treinoDto);
 
-    public List<TreinoDto> findAllByFicha(Ficha ficha);
+    public List<Treino> findAllByFicha(Ficha ficha);
 }

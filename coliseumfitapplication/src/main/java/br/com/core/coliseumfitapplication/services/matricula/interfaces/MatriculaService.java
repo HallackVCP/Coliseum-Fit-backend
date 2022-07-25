@@ -10,4 +10,6 @@ public interface MatriculaService {
     public Matricula save(MatriculaDto matriculaDto, Integer Id);
 
     public List<Matricula> findAll();
+
+    public Matricula updateById(Integer Id, MatriculaDto matriculaDto);
 }

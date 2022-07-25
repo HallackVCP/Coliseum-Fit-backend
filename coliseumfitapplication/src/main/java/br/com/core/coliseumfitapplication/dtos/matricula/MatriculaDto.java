@@ -7,39 +7,36 @@ import br.com.core.coliseumfitapplication.model.matricula.StatusMatricula;
 public class MatriculaDto {
 
 
-    private StatusMatricula status;
-    private Plano plano;
+    private String status;
+    private String plano;
 
 
 
     public MatriculaDto() {
     }
 
-    public MatriculaDto(StatusMatricula status, Plano plano) {
+    public MatriculaDto(String status, String plano) {
         this.status = status;
         this.plano = plano;
     }
 
-    public MatriculaDto(String status, String plano){
-        this.status = StatusMatricula.valueOf(status);
-        this.plano = Plano.valueOf(plano);
-    }
 
 
 
-    public StatusMatricula getStatus() {
+
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(StatusMatricula status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public Plano getPlano() {
+    public String getPlano() {
         return plano;
     }
 
-    public void setPlano(Plano plano) {
+    public void setPlano(String plano) {
         this.plano = plano;
     }
 

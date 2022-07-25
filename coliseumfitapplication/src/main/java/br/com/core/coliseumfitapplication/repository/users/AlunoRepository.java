@@ -11,4 +11,5 @@ import java.util.List;
 public interface AlunoRepository extends JpaRepository<Aluno, Integer> {
 
     List<Aluno> findAllByInstrutor(Instrutor instrutor);
+    Aluno findByEmail(String email);
 }

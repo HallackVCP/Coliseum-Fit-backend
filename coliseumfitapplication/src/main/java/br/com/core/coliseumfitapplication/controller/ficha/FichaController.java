@@ -37,9 +37,7 @@ public class FichaController {
     @PostMapping(value = "/criar-ficha{aluno}")
     public ResponseEntity<Void> criarFicha(@PathVariable Aluno aluno,  @RequestBody FichaDto fichaDto){
         Ficha ficha = fichaService.salvarFicha(fichaDto, aluno);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().
-                path("/{id}").buildAndExpand(ficha.getId()).toUri();
-        return ResponseEntity.created(uri).build();
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping(value = "/solicitar-alteracao-ficha{id}")

@@ -11,4 +11,8 @@ public interface AlunoService {
     public Aluno save(AlunoDto alunoDto);
 
     public List<Aluno> findAll(Instrutor instrutor);
+
+    public Aluno findById(Integer Id);
+
+    public Aluno findByUsernameAndPassword(String email, String senha);
 }
