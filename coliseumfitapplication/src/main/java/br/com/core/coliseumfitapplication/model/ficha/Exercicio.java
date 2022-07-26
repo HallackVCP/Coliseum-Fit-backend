@@ -17,7 +17,7 @@ public class Exercicio implements Serializable {
 
     private int repeticoes;
 
-    private double carga;
+    private String carga;
 
     private int series;
 
@@ -31,7 +31,7 @@ public class Exercicio implements Serializable {
     public Exercicio() {
     }
 
-    public Exercicio(Integer Id, String nome, int repeticoes, double carga, int series) {
+    public Exercicio(Integer Id, String nome, int repeticoes, String carga, int series) {
         this.Id = Id;
         this.nome = nome;
         this.repeticoes = repeticoes;
@@ -63,11 +63,11 @@ public class Exercicio implements Serializable {
         this.repeticoes = repeticoes;
     }
 
-    public double getCarga() {
+    public String getCarga() {
         return carga;
     }
 
-    public void setCarga(double carga) {
+    public void setCarga(String carga) {
         this.carga = carga;
     }
 

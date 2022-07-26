@@ -4,14 +4,14 @@ public class ExercicioDto {
 
     private String nome;
     private int repeticoes;
-    private double carga;
+    private String carga;
     private int series;
 
 
     public ExercicioDto() {
     }
 
-    public ExercicioDto(String nome, int repeticoes, double carga, int series) {
+    public ExercicioDto(String nome, int repeticoes, String carga, int series) {
         this.nome = nome;
         this.repeticoes = repeticoes;
         this.carga = carga;
@@ -35,11 +35,11 @@ public class ExercicioDto {
         this.repeticoes = repeticoes;
     }
 
-    public double getCarga() {
+    public String getCarga() {
         return carga;
     }
 
-    public void setCarga(double carga) {
+    public void setCarga(String carga) {
         this.carga = carga;
     }
 

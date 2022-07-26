@@ -7,17 +7,13 @@ public class ExameFisicoDto {
     private double peso;
     private double altura;
 
-    //private Integer Id;
+
 
 
     public ExameFisicoDto() {
     }
 
-    /*public ExameFisicoDto(Integer id, double peso, double altura) {
-        this.Id = id;
-        this.peso = peso;
-        this.altura = altura;
-    }*/
+
 
     public ExameFisicoDto(double peso, double altura) {
         this.peso = peso;
@@ -40,11 +36,5 @@ public class ExameFisicoDto {
         this.altura = altura;
     }
 
-    /*public Integer getId() {
-        return Id;
-    }
 
-    public void setId(Integer id) {
-        Id = id;
-    }*/
 }
