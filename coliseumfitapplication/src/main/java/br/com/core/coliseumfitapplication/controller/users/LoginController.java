@@ -10,10 +10,7 @@ import br.com.core.coliseumfitapplication.services.users.interfaces.AlunoService
 import br.com.core.coliseumfitapplication.services.users.interfaces.InstrutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @RestController
@@ -30,7 +27,7 @@ public class LoginController {
     private AdministradorService administradorService;
 
 
-    @GetMapping(value = "/aluno")
+    @PostMapping(value = "/aluno")
     public ResponseEntity<Aluno> loginAluno(@RequestBody LoginDto loginDto){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         loginDto.setPassword(passwordEncoder.encode(loginDto.getPassword()));
@@ -38,7 +35,7 @@ public class LoginController {
                 body(alunoService.findByUsernameAndPassword(loginDto.getUsername(), loginDto.getPassword()));
     }
 
-    @GetMapping(value = "/instrutor")
+    @PostMapping(value = "/instrutor")
     public ResponseEntity<Instrutor> loginInstrutor(@RequestBody LoginDto loginDto){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         loginDto.setPassword(passwordEncoder.encode(loginDto.getPassword()));
@@ -46,7 +43,7 @@ public class LoginController {
                 body(instrutorService.findByUsernameAndPassword(loginDto.getUsername(), loginDto.getPassword()));
     }
 
-    @GetMapping(value = "/administrador")
+    @PostMapping(value = "/administrador")
     public ResponseEntity<Administrador> loginAdministrador(@RequestBody LoginDto loginDto){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         loginDto.setPassword(passwordEncoder.encode(loginDto.getPassword()));
