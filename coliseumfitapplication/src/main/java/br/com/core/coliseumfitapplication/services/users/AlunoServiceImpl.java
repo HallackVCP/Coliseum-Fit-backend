@@ -11,6 +11,7 @@ import br.com.core.coliseumfitapplication.services.exceptions.SenhaIncorretaExce
 import br.com.core.coliseumfitapplication.services.users.interfaces.AlunoService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,14 +23,15 @@ public class AlunoServiceImpl implements AlunoService {
     @Autowired
     AlunoRepository alunoRepository;
 
-    private final ModelMapper modelMapper;
+    @Autowired
+    private ModelMapper modelMapper;
 
-    public AlunoServiceImpl(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-    }
+
 
     @Override
     public Aluno save(AlunoDto alunoDto) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        alunoDto.setSenha(passwordEncoder.encode(alunoDto.getSenha()));
         return alunoRepository.save(modelMapper.map(alunoDto, Aluno.class));
     }
 

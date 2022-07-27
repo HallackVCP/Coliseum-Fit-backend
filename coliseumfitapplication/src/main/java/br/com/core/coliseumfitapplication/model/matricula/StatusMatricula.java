@@ -1,9 +1,9 @@
 package br.com.core.coliseumfitapplication.model.matricula;
 
 public enum StatusMatricula {
-    Ativa("Matricula Ativa"),
-    Pendente("Pagamento de matricula pendente"),
-    Inativa("Matricula cancelada");
+    Ativa("Ativa"),
+    Pendente("Pendente"),
+    Inativa("Inativa");
 
     private String status;
 

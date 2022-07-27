@@ -11,6 +11,7 @@ import java.io.Serializable;
 public class Matricula implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
 
     @Enumerated(EnumType.STRING)
@@ -20,7 +21,6 @@ public class Matricula implements Serializable {
     private Plano plano;
 
     @OneToOne
-    @MapsId
     private Aluno aluno;
 
 

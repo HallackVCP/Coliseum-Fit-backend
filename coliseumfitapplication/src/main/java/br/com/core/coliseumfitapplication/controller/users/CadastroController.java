@@ -33,22 +33,17 @@ public class CadastroController {
 
     @PostMapping(value = "/aluno")
     public ResponseEntity<Aluno> cadastroAluno(@RequestBody AlunoDto alunoDto){
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        alunoDto.setSenha(passwordEncoder.encode(alunoDto.getSenha()));
         return ResponseEntity.ok().body(alunoService.save(alunoDto));
     }
 
     @PostMapping(value = "/instrutor")
     public ResponseEntity<Instrutor> cadastroInstrutor(@RequestBody InstrutorDto instrutorDto){
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        instrutorDto.setSenha(passwordEncoder.encode(instrutorDto.getSenha()));
+
         return ResponseEntity.ok().body(instrutorService.save(instrutorDto));
     }
 
     @PostMapping(value = "/administrador")
     public ResponseEntity<Administrador> cadastroAdministrador(@RequestBody AdministradorDto administradorDto){
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        administradorDto.setSenha(passwordEncoder.encode(administradorDto.getSenha()));
         return ResponseEntity.ok().body(administradorService.save(administradorDto));
     }
 

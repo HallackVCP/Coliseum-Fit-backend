@@ -1,6 +1,7 @@
 package br.com.core.coliseumfitapplication.services.users;
 
 import br.com.core.coliseumfitapplication.dtos.users.info.ExameFisicoDto;
+import br.com.core.coliseumfitapplication.model.users.Aluno;
 import br.com.core.coliseumfitapplication.model.users.info.ExameFisico;
 import br.com.core.coliseumfitapplication.repository.users.info.ExameFisicoRepository;
 import br.com.core.coliseumfitapplication.services.exceptions.ObjectNotFoundException;
@@ -16,11 +17,13 @@ public class ExameFisicoServiceImpl implements ExameFisicoService {
     @Autowired
     private ExameFisicoRepository exameFisicoRepository;
 
+    @Autowired
     private ModelMapper modelMapper;
 
     @Override
     public ExameFisico save(ExameFisicoDto exameFisicoDto) {
-        return exameFisicoRepository.save(modelMapper.map(exameFisicoDto, ExameFisico.class));
+        ExameFisico save = modelMapper.map(exameFisicoDto, ExameFisico.class);
+        return exameFisicoRepository.save(save);
     }
 
     @Override

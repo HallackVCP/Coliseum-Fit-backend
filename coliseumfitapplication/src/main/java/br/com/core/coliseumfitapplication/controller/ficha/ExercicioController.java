@@ -4,6 +4,8 @@ package br.com.core.coliseumfitapplication.controller.ficha;
 import br.com.core.coliseumfitapplication.dtos.ficha.ExercicioDto;
 import br.com.core.coliseumfitapplication.model.ficha.Exercicio;
 import br.com.core.coliseumfitapplication.model.ficha.Treino;
+import br.com.core.coliseumfitapplication.repository.ficha.ExercicioRepository;
+import br.com.core.coliseumfitapplication.repository.ficha.TreinoRepository;
 import br.com.core.coliseumfitapplication.services.ficha.ExercicioServiceImpl;
 import br.com.core.coliseumfitapplication.services.ficha.interfaces.ExercicioService;
 import org.modelmapper.ModelMapper;
@@ -23,12 +25,16 @@ public class ExercicioController {
     @Autowired
     ExercicioService exercicioService;
 
-    private final ModelMapper modelMapper;
+    @Autowired
+    private ModelMapper modelMapper;
 
-    public ExercicioController(ExercicioService exercicioService, ModelMapper modelMapper) {
-        this.exercicioService = exercicioService;
-        this.modelMapper = modelMapper;
-    }
+    @Autowired
+    private ExercicioRepository exercicioRepository;
+
+    @Autowired
+    private TreinoRepository treinoRepository;
+
+
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<ExercicioDto> findById(@PathVariable Integer Id){
@@ -37,10 +43,10 @@ public class ExercicioController {
     }
 
     @GetMapping(value = "/listar-exercicios")
-    public ResponseEntity<List<ExercicioDto>> findAll(@PathVariable Treino treino){
+    public ResponseEntity<List<Exercicio>> findAll(@RequestBody Treino treino){
         List<Exercicio> exercicios = exercicioService.findAll(treino);
         return ResponseEntity.ok()
-                .body(modelMapper.map(exercicios, new TypeToken<List<ExercicioDto>>(){}.getType()));
+                .body(exercicios);
     }
 
     @DeleteMapping(value = "/deletar-todos{exercicios}")
@@ -56,11 +62,13 @@ public class ExercicioController {
     }
 
     @PostMapping(value = "/criar-exercicio")
-    public ResponseEntity<Void> criarExercicio(@RequestBody ExercicioDto exercicioDto){
+    public ResponseEntity<Void> criarExercicio(@RequestBody ExercicioDto exercicioDto, @RequestBody Treino treino){
         Exercicio exercicio = exercicioService.salvar(exercicioDto);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().
-                path("").buildAndExpand().toUri();
-        return ResponseEntity.created(uri).build();
+        exercicio.setTreino(treino);
+        treino.getExercicios().add(exercicio);
+        exercicioRepository.save(exercicio);
+        treinoRepository.save(treino);
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping(value = "/excluir-exercicio{id}")

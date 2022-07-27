@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface FichaService {
 
-    public Ficha salvarFicha(FichaDto fichaDto, Aluno aluno);
+    public Ficha salvarFicha(FichaDto fichaDto);
 
     public Ficha buscarFicha(Integer Id);
 

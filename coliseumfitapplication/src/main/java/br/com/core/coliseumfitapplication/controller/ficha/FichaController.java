@@ -4,7 +4,9 @@ package br.com.core.coliseumfitapplication.controller.ficha;
 import br.com.core.coliseumfitapplication.dtos.ficha.FichaDto;
 import br.com.core.coliseumfitapplication.model.ficha.Ficha;
 import br.com.core.coliseumfitapplication.model.users.Aluno;
+import br.com.core.coliseumfitapplication.repository.ficha.FichaRepository;
 import br.com.core.coliseumfitapplication.services.ficha.FichaServiceImpl;
+import br.com.core.coliseumfitapplication.services.ficha.interfaces.FichaService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +21,14 @@ import java.net.URI;
 public class FichaController {
 
     @Autowired
-    private FichaServiceImpl fichaService;
+    private FichaService fichaService;
 
-    private final ModelMapper modelMapper;
+    @Autowired
+    private ModelMapper modelMapper;
+    @Autowired
+    private FichaRepository fichaRepository;
 
-    public FichaController(ModelMapper modelMapper, FichaServiceImpl fichaService) {
-        this.modelMapper = modelMapper;
-        this.fichaService = fichaService;
-    }
+
 
 
     @GetMapping(value = "/{id}")
@@ -34,9 +36,11 @@ public class FichaController {
         return ResponseEntity.ok().body(fichaService.buscarFicha(Id));
     }
 
-    @PostMapping(value = "/criar-ficha{aluno}")
-    public ResponseEntity<Void> criarFicha(@PathVariable Aluno aluno,  @RequestBody FichaDto fichaDto){
-        Ficha ficha = fichaService.salvarFicha(fichaDto, aluno);
+    @PostMapping(value = "/criar-ficha")
+    public ResponseEntity<Void> criarFicha(@RequestBody FichaDto fichaDto, @RequestBody Aluno aluno){
+        Ficha ficha = fichaService.salvarFicha(fichaDto);
+        ficha.setAluno(aluno);
+        fichaRepository.save(ficha);
         return ResponseEntity.noContent().build();
     }
 

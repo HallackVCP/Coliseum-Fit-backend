@@ -23,21 +23,18 @@ public class MatriculaServiceImpl implements MatriculaService {
     @Autowired
     private MatriculaRepository matriculaRepository;
 
-    @Autowired
-    private AlunoService alunoService;
 
+
+    @Autowired
     private ModelMapper modelMapper;
 
-    public MatriculaServiceImpl(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-    }
+
 
     @Override
-    public Matricula save(MatriculaDto matriculaDto, Integer Id) {
+    public Matricula save(MatriculaDto matriculaDto) {
         Matricula matricula =new Matricula();
         matricula.setPlano(Plano.valueOf(matriculaDto.getPlano()));
         matricula.setStatus(StatusMatricula.valueOf(matriculaDto.getStatus()));
-        matricula.setAluno(alunoService.findById(Id));
         return matriculaRepository.save(matricula);
     }
 

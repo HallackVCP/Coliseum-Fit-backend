@@ -14,12 +14,12 @@ import java.util.List;
 public class Ficha implements Serializable {
 
 
-    @javax.persistence.Id
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
 
 
     @OneToOne
-    @MapsId
     private Aluno aluno;
 
     @OneToMany
@@ -61,6 +61,13 @@ public class Ficha implements Serializable {
         isAlterarFicha = alterarFicha;
     }
 
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
 
     @Override
     public boolean equals(Object o) {

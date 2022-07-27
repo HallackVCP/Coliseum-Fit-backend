@@ -7,6 +7,7 @@ import br.com.core.coliseumfitapplication.model.users.Aluno;
 import br.com.core.coliseumfitapplication.repository.ficha.FichaRepository;
 import br.com.core.coliseumfitapplication.services.exceptions.ObjectNotFoundException;
 import br.com.core.coliseumfitapplication.services.ficha.interfaces.FichaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
 
@@ -15,19 +16,16 @@ import java.util.Optional;
 @Service
 public class FichaServiceImpl implements FichaService {
 
-    private final FichaRepository fichaRepository;
+    @Autowired
+    private FichaRepository fichaRepository;
 
-    private final ModelMapper modelMapper;
+    @Autowired
+    private ModelMapper modelMapper;
 
-    public FichaServiceImpl(FichaRepository fichaRepository, ModelMapper modelMapper) {
-        this.fichaRepository = fichaRepository;
-        this.modelMapper = modelMapper;
-    }
 
     @Override
-    public Ficha salvarFicha(FichaDto fichaDto, Aluno aluno) {
+    public Ficha salvarFicha(FichaDto fichaDto) {
         Ficha saveFicha = modelMapper.map(fichaDto, Ficha.class);
-        saveFicha.setId(aluno.getId());
         return fichaRepository.save(saveFicha);
     }
 

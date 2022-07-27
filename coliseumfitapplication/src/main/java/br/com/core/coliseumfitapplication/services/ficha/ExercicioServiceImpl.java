@@ -10,6 +10,7 @@ import br.com.core.coliseumfitapplication.services.ficha.interfaces.ExercicioSer
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,15 +19,14 @@ import java.util.Optional;
 @Service
 public class ExercicioServiceImpl implements ExercicioService {
 
-    private final ExercicioRepository exercicioRepository;
+    @Autowired
+    private ExercicioRepository exercicioRepository;
 
-    private final ModelMapper modelMapper;
+    @Autowired
+    private ModelMapper modelMapper;
 
 
-    public ExercicioServiceImpl(ExercicioRepository exercicioRepository, ModelMapper modelMapper) {
-        this.exercicioRepository = exercicioRepository;
-        this.modelMapper = modelMapper;
-    }
+
 
     @Override
     public Exercicio salvar(ExercicioDto exercicioDto) {

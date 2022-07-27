@@ -9,6 +9,7 @@ import br.com.core.coliseumfitapplication.services.exceptions.SenhaIncorretaExce
 import br.com.core.coliseumfitapplication.services.users.interfaces.AdministradorService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,11 +18,14 @@ public class AdministradorServiceImpl implements AdministradorService {
     @Autowired
     AdministradorRepository administradorRepository;
 
+    @Autowired
     private ModelMapper modelMapper;
 
 
     @Override
     public Administrador save(AdministradorDto administradorDto) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        administradorDto.setSenha(passwordEncoder.encode(administradorDto.getSenha()));
         return administradorRepository.save(modelMapper.map(administradorDto, Administrador.class));
     }
 

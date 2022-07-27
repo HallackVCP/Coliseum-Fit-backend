@@ -10,13 +10,13 @@ import javax.persistence.*;
 public class ExameFisico {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
 
     private double peso;
     private double altura;
 
     @OneToOne
-    @MapsId
     private Aluno aluno;
 
 
@@ -27,7 +27,7 @@ public class ExameFisico {
 
 
     public ExameFisico(Integer Id, double peso, double altura) {
-        Id = Id;
+        this.Id = Id;
         this.peso = peso;
         this.altura = altura;
     }
@@ -48,7 +48,7 @@ public class ExameFisico {
         this.altura = altura;
     }
 
-    public int getId() {
+    public Integer getId() {
         return Id;
     }
 

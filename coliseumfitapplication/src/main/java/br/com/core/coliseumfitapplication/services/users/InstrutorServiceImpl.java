@@ -9,6 +9,7 @@ import br.com.core.coliseumfitapplication.services.exceptions.SenhaIncorretaExce
 import br.com.core.coliseumfitapplication.services.users.interfaces.InstrutorService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class InstrutorServiceImpl implements InstrutorService {
     @Autowired
     InstrutorRepository instrutorRepository;
 
+    @Autowired
     private ModelMapper modelMapper;
 
     @Override
@@ -28,6 +30,8 @@ public class InstrutorServiceImpl implements InstrutorService {
 
     @Override
     public Instrutor save(InstrutorDto instrutorDto) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        instrutorDto.setSenha(passwordEncoder.encode(instrutorDto.getSenha()));
         return instrutorRepository.save(modelMapper.map(instrutorDto, Instrutor.class));
     }
 

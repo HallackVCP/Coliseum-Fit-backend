@@ -9,6 +9,7 @@ import br.com.core.coliseumfitapplication.services.exceptions.ObjectNotFoundExce
 import br.com.core.coliseumfitapplication.services.ficha.interfaces.TreinoService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,14 +18,13 @@ import java.util.Optional;
 @Service
 public class TreinoServiceImpl implements TreinoService {
 
-    private final TreinoRepository treinoRepository;
+    @Autowired
+    private TreinoRepository treinoRepository;
 
-    private final ModelMapper modelMapper;
+    @Autowired
+    private ModelMapper modelMapper;
 
-    public TreinoServiceImpl(TreinoRepository treinoRepository, ModelMapper modelMapper) {
-        this.treinoRepository = treinoRepository;
-        this.modelMapper = modelMapper;
-    }
+
 
     @Override
     public Treino salvarTreino(TreinoDto treinoDto) {
