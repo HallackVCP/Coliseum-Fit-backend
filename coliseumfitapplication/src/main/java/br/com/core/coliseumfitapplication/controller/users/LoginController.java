@@ -27,7 +27,7 @@ public class LoginController {
     private AdministradorService administradorService;
 
 
-    @PostMapping(value = "/aluno")
+    @PutMapping(value = "/aluno")
     public ResponseEntity<Aluno> loginAluno(@RequestBody LoginDto loginDto){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         loginDto.setPassword(passwordEncoder.encode(loginDto.getPassword()));
