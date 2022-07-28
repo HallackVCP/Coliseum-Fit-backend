@@ -20,6 +20,7 @@ public class Ficha implements Serializable {
 
 
     @OneToOne
+    @JsonIgnore
     private Aluno aluno;
 
     @OneToMany

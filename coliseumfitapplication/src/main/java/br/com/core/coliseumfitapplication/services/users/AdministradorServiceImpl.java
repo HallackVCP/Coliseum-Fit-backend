@@ -32,10 +32,11 @@ public class AdministradorServiceImpl implements AdministradorService {
     @Override
     public Administrador findByUsernameAndPassword(String email, String senha) {
         Administrador administrador = administradorRepository.findByEmail(email);
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         if(administrador == null){
             throw new InvalidUsernameException("Nome de usuario incorreto");
         }
-        if(administrador.getSenha().equals(senha)){
+        if(passwordEncoder.matches(senha, administrador.getSenha())){
             return administrador;
         }
         else{

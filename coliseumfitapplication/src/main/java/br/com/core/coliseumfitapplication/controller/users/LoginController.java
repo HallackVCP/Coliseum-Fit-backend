@@ -11,7 +11,7 @@ import br.com.core.coliseumfitapplication.services.users.interfaces.InstrutorSer
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 @RestController
 @RequestMapping(value = "/login")
@@ -27,26 +27,20 @@ public class LoginController {
     private AdministradorService administradorService;
 
 
-    @PutMapping(value = "/aluno")
+    @PostMapping(value = "/aluno")
     public ResponseEntity<Aluno> loginAluno(@RequestBody LoginDto loginDto){
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        loginDto.setPassword(passwordEncoder.encode(loginDto.getPassword()));
         return ResponseEntity.ok().
                 body(alunoService.findByUsernameAndPassword(loginDto.getUsername(), loginDto.getPassword()));
     }
 
     @PostMapping(value = "/instrutor")
     public ResponseEntity<Instrutor> loginInstrutor(@RequestBody LoginDto loginDto){
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        loginDto.setPassword(passwordEncoder.encode(loginDto.getPassword()));
         return ResponseEntity.ok().
                 body(instrutorService.findByUsernameAndPassword(loginDto.getUsername(), loginDto.getPassword()));
     }
 
     @PostMapping(value = "/administrador")
     public ResponseEntity<Administrador> loginAdministrador(@RequestBody LoginDto loginDto){
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        loginDto.setPassword(passwordEncoder.encode(loginDto.getPassword()));
         return ResponseEntity.ok().
                 body(administradorService.findByUsernameAndPassword(loginDto.getUsername(), loginDto.getPassword()));
     }

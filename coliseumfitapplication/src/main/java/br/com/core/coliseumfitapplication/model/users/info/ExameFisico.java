@@ -2,6 +2,7 @@ package br.com.core.coliseumfitapplication.model.users.info;
 
 
 import br.com.core.coliseumfitapplication.model.users.Aluno;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -17,6 +18,7 @@ public class ExameFisico {
     private double altura;
 
     @OneToOne
+    @JsonIgnore
     private Aluno aluno;
 
 

@@ -23,6 +23,19 @@ public class Aluno extends Pessoa implements Serializable {
     @JsonIgnore
     private Instrutor instrutor;
 
+    @OneToOne
+    @JoinColumn(name = "ficha_id")
+    private Ficha ficha;
+
+    @OneToOne
+    @JoinColumn(name = "exame_fisico_id")
+    private ExameFisico exameFisico;
+
+    @OneToOne
+    @JoinColumn(name = "matricula_id")
+    private Matricula matricula;
+
+
 
     public Aluno() {
     }
@@ -51,9 +64,29 @@ public class Aluno extends Pessoa implements Serializable {
     public void setInstrutor(Instrutor instrutor) {
         this.instrutor = instrutor;
     }
+    public Ficha getFicha() {
+        return ficha;
+    }
 
+    public void setFicha(Ficha ficha) {
+        this.ficha = ficha;
+    }
 
+    public ExameFisico getExameFisico() {
+        return exameFisico;
+    }
 
+    public void setExameFisico(ExameFisico exameFisico) {
+        this.exameFisico = exameFisico;
+    }
+
+    public Matricula getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(Matricula matricula) {
+        this.matricula = matricula;
+    }
 
     @Override
     public boolean equals(Object o) {

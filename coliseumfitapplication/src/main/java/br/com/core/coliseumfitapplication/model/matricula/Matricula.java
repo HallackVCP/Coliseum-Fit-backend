@@ -2,6 +2,7 @@ package br.com.core.coliseumfitapplication.model.matricula;
 
 
 import br.com.core.coliseumfitapplication.model.users.Aluno;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -21,6 +22,7 @@ public class Matricula implements Serializable {
     private Plano plano;
 
     @OneToOne
+    @JsonIgnore
     private Aluno aluno;
 
 

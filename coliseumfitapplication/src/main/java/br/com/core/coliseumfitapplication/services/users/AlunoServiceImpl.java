@@ -54,14 +54,15 @@ public class AlunoServiceImpl implements AlunoService {
     @Override
     public Aluno findByUsernameAndPassword(String email, String senha) {
         Aluno aluno = alunoRepository.findByEmail(email);
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         if(aluno == null){
             throw new InvalidUsernameException("Nome de usuario incorreto");
         }
-        if(aluno.getSenha().equals(senha)){
+        if(passwordEncoder.matches(senha, aluno.getSenha())){
             return aluno;
         }
         else{
-            throw new SenhaIncorretaException("Senha incorreta");
+            throw new SenhaIncorretaException("Senha incorreta: "+ aluno.getSenha());
         }
     }
 }

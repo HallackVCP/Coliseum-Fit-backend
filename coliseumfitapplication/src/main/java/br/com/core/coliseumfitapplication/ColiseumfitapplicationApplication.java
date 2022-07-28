@@ -142,15 +142,19 @@ public class ColiseumfitapplicationApplication implements CommandLineRunner {
 
         Matricula matricula = matriculaService.save(matriculaDto);
         matricula.setAluno(aluno);
+        aluno.setMatricula(matricula);
         matriculaRepository.save(matricula);
         Matricula matricula1 = matriculaService.save(matriculaDto1);
         matricula1.setAluno(aluno1);
+        aluno1.setMatricula(matricula1);
         matriculaRepository.save(matricula1);
         Matricula matricula2 = matriculaService.save(matriculaDto1);
         matricula2.setAluno(aluno2);
+        aluno2.setMatricula(matricula2);
         matriculaRepository.save(matricula2);
         Matricula matricula3 = matriculaService.save(matriculaDto);
         matricula3.setAluno(aluno3);
+        aluno3.setMatricula(matricula3);
         matriculaRepository.save(matricula3);
 
         ExameFisicoDto exameFisicoDto = new ExameFisicoDto(80, 1.75);
@@ -160,21 +164,27 @@ public class ColiseumfitapplicationApplication implements CommandLineRunner {
 
         ExameFisico exameFisico = exameFisicoService.save(exameFisicoDto);
         exameFisico.setAluno(aluno);
+        aluno.setExameFisico(exameFisico);
         exameFisicoRepository.save(exameFisico);
         ExameFisico exameFisico1 = exameFisicoService.save(exameFisicoDto1);
         exameFisico1.setAluno(aluno1);
+        aluno1.setExameFisico(exameFisico1);
         exameFisicoRepository.save(exameFisico1);
         ExameFisico exameFisico2 = exameFisicoService.save(exameFisicoDto2);
         exameFisico2.setAluno(aluno2);
+        aluno2.setExameFisico(exameFisico2);
         exameFisicoRepository.save(exameFisico2);
         ExameFisico exameFisico3 = exameFisicoService.save(exameFisicoDto3);
         exameFisico3.setAluno(aluno3);
+        aluno3.setExameFisico(exameFisico3);
         exameFisicoRepository.save(exameFisico3);
 
         FichaDto fichaDto = new FichaDto(true);
         Ficha ficha = fichaService.salvarFicha(fichaDto);
         ficha.setAluno(aluno);
+        aluno.setFicha(ficha);
         fichaRepository.save(ficha);
+        alunoRepository.save(aluno);
         Ficha ficha1 = fichaService.salvarFicha(fichaDto);
         ficha1.setAluno(aluno1);
         fichaRepository.save(ficha1);

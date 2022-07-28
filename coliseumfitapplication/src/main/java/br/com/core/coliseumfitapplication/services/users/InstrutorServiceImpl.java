@@ -38,10 +38,11 @@ public class InstrutorServiceImpl implements InstrutorService {
     @Override
     public Instrutor findByUsernameAndPassword(String email, String senha) {
         Instrutor instrutor = instrutorRepository.findByEmail(email);
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         if(instrutor == null){
             throw new InvalidUsernameException("Nome de usuario incorreto");
         }
-        if(instrutor.getSenha().equals(senha)){
+        if(passwordEncoder.matches(senha, instrutor.getSenha())){
             return instrutor;
         }
         else{
