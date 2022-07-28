@@ -20,7 +20,7 @@ public class Administrador extends Pessoa implements Serializable {
 
 
     @OneToMany
-    private List<Instrutor> instrutores;
+    private List<Instrutor> instrutores = new ArrayList<>();
 
     public Administrador() {
     }
