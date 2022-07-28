@@ -19,7 +19,8 @@ public class Administrador extends Pessoa implements Serializable {
 
 
 
-
+    @OneToMany
+    private List<Instrutor> instrutores;
 
     public Administrador() {
     }
@@ -49,8 +50,13 @@ public class Administrador extends Pessoa implements Serializable {
     }
 
 
+    public List<Instrutor> getInstrutores() {
+        return instrutores;
+    }
 
-
+    public void setInstrutores(List<Instrutor> instrutores) {
+        this.instrutores = instrutores;
+    }
 
     @Override
     public boolean equals(Object o) {

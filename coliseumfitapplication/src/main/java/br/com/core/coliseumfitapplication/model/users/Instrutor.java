@@ -21,6 +21,7 @@ public class Instrutor extends Pessoa implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "administrador_id")
+    @JsonIgnore
     private Administrador administrador;
 
     public Instrutor(Integer Id) {

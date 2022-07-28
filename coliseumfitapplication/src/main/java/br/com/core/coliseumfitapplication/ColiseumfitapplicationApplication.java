@@ -118,6 +118,8 @@ public class ColiseumfitapplicationApplication implements CommandLineRunner {
 
         instrutor.setAdministrador(administrador);
         instrutor1.setAdministrador(administrador);
+        administrador.getInstrutores().add(instrutor);
+        administrador.getInstrutores().add(instrutor1);
 
         instrutor.getAlunos().add(aluno);
         instrutor.getAlunos().add(aluno1);
