@@ -188,12 +188,15 @@ public class ColiseumfitapplicationApplication implements CommandLineRunner {
         fichaRepository.save(ficha);
         Ficha ficha1 = fichaService.salvarFicha(fichaDto);
         ficha1.setAluno(aluno1);
+        aluno1.setFicha(ficha1);
         fichaRepository.save(ficha1);
         Ficha ficha2 = fichaService.salvarFicha(fichaDto);
         ficha2.setAluno(aluno2);
+        aluno2.setFicha(ficha2);
         fichaRepository.save(ficha2);
         Ficha ficha3 = fichaService.salvarFicha(fichaDto);
         ficha3.setAluno(aluno3);
+        aluno3.setFicha(ficha3);
         fichaRepository.save(ficha3);
         alunoRepository.save(aluno);
         alunoRepository.save(aluno1);
