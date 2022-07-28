@@ -186,7 +186,6 @@ public class ColiseumfitapplicationApplication implements CommandLineRunner {
         ficha.setAluno(aluno);
         aluno.setFicha(ficha);
         fichaRepository.save(ficha);
-        alunoRepository.save(aluno);
         Ficha ficha1 = fichaService.salvarFicha(fichaDto);
         ficha1.setAluno(aluno1);
         fichaRepository.save(ficha1);
@@ -196,6 +195,10 @@ public class ColiseumfitapplicationApplication implements CommandLineRunner {
         Ficha ficha3 = fichaService.salvarFicha(fichaDto);
         ficha3.setAluno(aluno3);
         fichaRepository.save(ficha3);
+        alunoRepository.save(aluno);
+        alunoRepository.save(aluno1);
+        alunoRepository.save(aluno2);
+        alunoRepository.save(aluno3);
 
         TreinoDto treinoDto = new TreinoDto("Treino A", "Treino de peitoral,ombro e triceps");
         Treino treino = treinoService.salvarTreino(treinoDto);
