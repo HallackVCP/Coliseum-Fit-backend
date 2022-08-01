@@ -12,7 +12,7 @@ public interface FichaService {
 
     public Ficha buscarFicha(Integer Id);
 
-    public FichaDto update(Integer Id, FichaDto fichaDto);
+    public Ficha update(Integer Id, FichaDto fichaDto);
 
 
 

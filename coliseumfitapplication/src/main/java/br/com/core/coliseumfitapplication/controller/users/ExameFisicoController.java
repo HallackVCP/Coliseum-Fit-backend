@@ -4,6 +4,7 @@ package br.com.core.coliseumfitapplication.controller.users;
 import br.com.core.coliseumfitapplication.dtos.users.info.ExameFisicoDto;
 import br.com.core.coliseumfitapplication.model.users.Aluno;
 import br.com.core.coliseumfitapplication.model.users.info.ExameFisico;
+import br.com.core.coliseumfitapplication.repository.users.AlunoRepository;
 import br.com.core.coliseumfitapplication.repository.users.info.ExameFisicoRepository;
 import br.com.core.coliseumfitapplication.services.users.interfaces.ExameFisicoService;
 import org.modelmapper.ModelMapper;
@@ -25,19 +26,14 @@ public class ExameFisicoController {
     private ModelMapper modelMapper;
 
     @Autowired
-    private ExameFisicoRepository exameFisicoRepository;
+    private AlunoRepository alunoRepository;
 
-    @PostMapping(value = "/inserir-exame-fisico")
-    public ResponseEntity<ExameFisicoDto> criarExameFisico(@RequestBody ExameFisicoDto exameFisicoDto, @RequestBody Aluno aluno){
-        ExameFisico exameFisico = exameFisicoService.save(exameFisicoDto);
-        exameFisico.setAluno(aluno);
-        exameFisicoRepository.save(exameFisico);
-        return ResponseEntity.ok().body(modelMapper.map(exameFisico, ExameFisicoDto.class));
-    }
 
-    @PutMapping(value = "/atualizar-dados-exame-fisico{id}")
-    public ResponseEntity<ExameFisicoDto> atualizarExameFisico(@PathVariable Integer Id, @RequestBody ExameFisicoDto exameFisicoDto){
+    @PutMapping(value = "/atualizar-dados-exame-fisico{Id}")
+    public ResponseEntity<Aluno> atualizarExameFisico(@PathVariable Integer Id, @RequestBody ExameFisicoDto exameFisicoDto){
         ExameFisico exameFisico = exameFisicoService.update(Id, exameFisicoDto);
-        return ResponseEntity.ok().body(modelMapper.map(exameFisico, ExameFisicoDto.class));
+        exameFisico.getAluno().setExameFisico(exameFisico);
+        Aluno aluno = alunoRepository.save(exameFisico.getAluno());
+        return ResponseEntity.ok().body(aluno);
     }
 }

@@ -5,6 +5,7 @@ import br.com.core.coliseumfitapplication.dtos.ficha.FichaDto;
 import br.com.core.coliseumfitapplication.model.ficha.Ficha;
 import br.com.core.coliseumfitapplication.model.users.Aluno;
 import br.com.core.coliseumfitapplication.repository.ficha.FichaRepository;
+import br.com.core.coliseumfitapplication.repository.users.AlunoRepository;
 import br.com.core.coliseumfitapplication.services.ficha.FichaServiceImpl;
 import br.com.core.coliseumfitapplication.services.ficha.interfaces.FichaService;
 import org.modelmapper.ModelMapper;
@@ -28,26 +29,24 @@ public class FichaController {
     @Autowired
     private FichaRepository fichaRepository;
 
+    @Autowired
+    private AlunoRepository alunoRepository;
 
 
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/{Id}")
     public ResponseEntity<Ficha> buscarFicha(@PathVariable Integer Id){
         return ResponseEntity.ok().body(fichaService.buscarFicha(Id));
     }
 
-    @PostMapping(value = "/criar-ficha")
-    public ResponseEntity<Void> criarFicha(@RequestBody FichaDto fichaDto, @RequestBody Aluno aluno){
-        Ficha ficha = fichaService.salvarFicha(fichaDto);
-        ficha.setAluno(aluno);
-        fichaRepository.save(ficha);
-        return ResponseEntity.noContent().build();
-    }
 
-    @PutMapping(value = "/solicitar-alteracao-ficha{id}")
-    public ResponseEntity<Void> solicitarAlteracao(@PathVariable Integer Id, @RequestBody FichaDto fichaDto){
-        FichaDto ficha = fichaService.update(Id, fichaDto);
-        return ResponseEntity.noContent().build();
+
+    @PutMapping(value = "/solicitar-alteracao-ficha{Id}")
+    public ResponseEntity<Aluno> solicitarAlteracao(@PathVariable Integer Id, @RequestBody FichaDto fichaDto){
+        Ficha ficha = fichaService.update(Id, fichaDto);
+        ficha.getAluno().setFicha(ficha);
+        alunoRepository.save(ficha.getAluno());
+        return ResponseEntity.ok().body(ficha.getAluno());
     }
 
 

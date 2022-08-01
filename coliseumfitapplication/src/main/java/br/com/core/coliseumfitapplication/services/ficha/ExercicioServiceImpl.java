@@ -55,8 +55,7 @@ public class ExercicioServiceImpl implements ExercicioService {
     }
 
     @Override
-    public void deleteAll(List<ExercicioDto> exerciciosDto) {
-        List<Exercicio> exercicios = modelMapper.map(exerciciosDto, new TypeToken<List<Exercicio>>(){}.getType());
+    public void deleteAll(List<Exercicio> exercicios) {
         exercicioRepository.deleteAll(exercicios);
     }
 

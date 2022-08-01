@@ -17,7 +17,7 @@ public interface ExercicioService {
 
     public void deleteById(Integer Id);
 
-    public void deleteAll(List<ExercicioDto> exerciciosDto);
+    public void deleteAll(List<Exercicio> exercicios);
 
 
     public Exercicio updateById(Integer Id, ExercicioDto exercicioDto);

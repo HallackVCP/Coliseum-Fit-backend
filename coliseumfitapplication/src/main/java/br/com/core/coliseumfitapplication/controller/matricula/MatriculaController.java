@@ -5,6 +5,7 @@ import br.com.core.coliseumfitapplication.dtos.matricula.MatriculaDto;
 import br.com.core.coliseumfitapplication.model.matricula.Matricula;
 import br.com.core.coliseumfitapplication.model.users.Aluno;
 import br.com.core.coliseumfitapplication.repository.matricula.MatriculaRepository;
+import br.com.core.coliseumfitapplication.repository.users.AlunoRepository;
 import br.com.core.coliseumfitapplication.services.matricula.interfaces.MatriculaService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,25 +27,19 @@ public class MatriculaController {
     @Autowired
     private MatriculaRepository matriculaRepository;
 
+    @Autowired
+    private AlunoRepository alunoRepository;
 
-    @PostMapping(value = "/criar-matricula")
-    public ResponseEntity<Void> criarMatricula(@RequestBody Aluno aluno, @RequestBody MatriculaDto matriculaDto){
-        Matricula matricula = matriculaService.save(matriculaDto);
-        matricula.setAluno(aluno);
-        matriculaRepository.save(matricula);
-        return ResponseEntity.noContent().build();
-    }
 
-    @GetMapping (value = "/matriculas")
-    public ResponseEntity<List<Matricula>> findAll(){
-        return ResponseEntity.ok().body(matriculaService.findAll());
-    }
 
-    @PostMapping(value = "/atualizar-matricula/{id}")
-    public ResponseEntity<Void> atualizarMatricula(@PathVariable Integer Id, @RequestBody MatriculaDto matriculaDto){
+
+    @PutMapping(value = "/atualizar-matricula/{Id}")
+    public ResponseEntity<Aluno> atualizarMatricula(@PathVariable Integer Id, @RequestBody MatriculaDto matriculaDto){
 
         Matricula matricula = matriculaService.updateById(Id, matriculaDto);
+        matricula.getAluno().setMatricula(matricula);
+        Aluno aluno = alunoRepository.save(matricula.getAluno());
 
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().body(aluno);
     }
 }

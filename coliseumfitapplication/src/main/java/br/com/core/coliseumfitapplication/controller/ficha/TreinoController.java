@@ -7,6 +7,7 @@ import br.com.core.coliseumfitapplication.model.ficha.Treino;
 import br.com.core.coliseumfitapplication.repository.ficha.FichaRepository;
 import br.com.core.coliseumfitapplication.repository.ficha.TreinoRepository;
 import br.com.core.coliseumfitapplication.services.ficha.TreinoServiceImpl;
+import br.com.core.coliseumfitapplication.services.ficha.interfaces.FichaService;
 import br.com.core.coliseumfitapplication.services.ficha.interfaces.TreinoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,14 +31,18 @@ public class TreinoController {
     @Autowired
     private FichaRepository fichaRepository;
 
-    @GetMapping(value = "/treino{id}")
+    @Autowired
+    private FichaService fichaService;
+
+    @GetMapping(value = "/treino{Id}")
     public ResponseEntity<Treino> buscarTreino(@PathVariable Integer Id){
         return ResponseEntity.ok().body(treinoService.findById(Id));
     }
 
-    @PostMapping(value = "criar-treino")
-    public ResponseEntity<Void> salvarTreino(@RequestBody TreinoDto treinoDto, @RequestBody Ficha ficha){
+    @PostMapping(value = "criar-treino/{IdFicha}")
+    public ResponseEntity<Void> salvarTreino(@RequestBody TreinoDto treinoDto, @PathVariable Integer IdFicha){
         Treino treino = treinoService.salvarTreino(treinoDto);
+        Ficha ficha = fichaService.buscarFicha(IdFicha);
         treino.setFicha(ficha);
         ficha.getTreinos().add(treino);
         fichaRepository.save(ficha);

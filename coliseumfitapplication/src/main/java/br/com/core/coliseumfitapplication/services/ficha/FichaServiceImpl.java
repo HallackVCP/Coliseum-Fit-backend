@@ -41,13 +41,13 @@ public class FichaServiceImpl implements FichaService {
     }
 
     @Override
-    public FichaDto update(Integer Id, FichaDto fichaDto) {
+    public Ficha update(Integer Id, FichaDto fichaDto) {
         Optional<Ficha> fichaOptional = fichaRepository.findById(Id);
         if(fichaOptional.isPresent()){
             Ficha ficha = fichaOptional.get();
             ficha.setAlterarFicha(fichaDto.isAlterarFicha());
             fichaRepository.save(ficha);
-            return modelMapper.map(ficha, FichaDto.class);
+            return ficha;
         }
         else{
             throw new ObjectNotFoundException("Objeto não encontrado! Id: " + Id + ", Tipo: " + Ficha.class);

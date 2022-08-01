@@ -36,7 +36,7 @@ public class ExercicioController {
 
 
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/{Id}")
     public ResponseEntity<ExercicioDto> findById(@PathVariable Integer Id){
         Exercicio exercicio = exercicioService.findById(Id);
         return ResponseEntity.ok().body(modelMapper.map(exercicio, ExercicioDto.class));
@@ -49,13 +49,13 @@ public class ExercicioController {
                 .body(exercicios);
     }
 
-    @DeleteMapping(value = "/deletar-todos{exercicios}")
-    public ResponseEntity<Void> deletarTodos(@PathVariable List<ExercicioDto> exercicioDtoList){
-        exercicioService.deleteAll(exercicioDtoList);
+    @DeleteMapping(value = "/deletar-todos")
+    public ResponseEntity<Void> deletarTodos(@RequestBody List<Exercicio> exercicioList){
+        exercicioService.deleteAll(exercicioList);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping(value = "/atualizar{id}")
+    @PutMapping(value = "/atualizar/{Id}")
     public ResponseEntity<Void> update(@PathVariable Integer Id, @RequestBody ExercicioDto exercicioDto){
         Exercicio exercicio = exercicioService.updateById(Id, exercicioDto);
         return ResponseEntity.noContent().build();
@@ -71,7 +71,7 @@ public class ExercicioController {
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping(value = "/excluir-exercicio{id}")
+    @DeleteMapping(value = "/excluir-exercicio/{Id}")
     public ResponseEntity<Void> deletarExercicio(@PathVariable Integer Id){
         exercicioService.deleteById(Id);
         return ResponseEntity.noContent().build();
