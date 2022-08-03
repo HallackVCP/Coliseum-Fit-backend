@@ -8,6 +8,7 @@ import br.com.core.coliseumfitapplication.repository.ficha.ExercicioRepository;
 import br.com.core.coliseumfitapplication.repository.ficha.TreinoRepository;
 import br.com.core.coliseumfitapplication.services.ficha.ExercicioServiceImpl;
 import br.com.core.coliseumfitapplication.services.ficha.interfaces.ExercicioService;
+import br.com.core.coliseumfitapplication.services.ficha.interfaces.TreinoService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,9 @@ public class ExercicioController {
 
     @Autowired
     private TreinoRepository treinoRepository;
+
+    @Autowired
+    private TreinoService treinoService;
 
 
 
@@ -61,9 +65,10 @@ public class ExercicioController {
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping(value = "/criar-exercicio")
-    public ResponseEntity<Void> criarExercicio(@RequestBody ExercicioDto exercicioDto, @RequestBody Treino treino){
+    @PostMapping(value = "/criar-exercicio/{IdTreino}")
+    public ResponseEntity<Void> criarExercicio(@RequestBody ExercicioDto exercicioDto, @PathVariable Integer IdTreino){
         Exercicio exercicio = exercicioService.salvar(exercicioDto);
+        Treino treino = treinoService.findById(IdTreino);
         exercicio.setTreino(treino);
         treino.getExercicios().add(exercicio);
         exercicioRepository.save(exercicio);
